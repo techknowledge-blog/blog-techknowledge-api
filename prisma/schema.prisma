@@ -9,14 +9,14 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgres"
   url      = env("DATABASE_URL")
 }
 
 model User {
   id    Int     @default(autoincrement()) @id
   email String  @unique
-  name  String?
+  name  String? 
   posts Post[]
 }
 
@@ -27,5 +27,4 @@ model Post {
   published   Boolean? @default(false)
   author      User?    @relation(fields: [authorId], references: [id])
   authorId    Int?
-  mikkaiserId Int?
 }
