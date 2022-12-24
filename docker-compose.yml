@@ -5,7 +5,6 @@ services:
     build: .
     container_name: technowledge_api
     entrypoint: dockerize -wait tcp://db:5432 -timeout 11s docker-entrypoint.sh
-    command: npm run start:dev
     ports:
       - 3000:3000
     networks:
