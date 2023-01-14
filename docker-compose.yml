@@ -7,8 +7,8 @@ services:
     entrypoint: dockerize -wait tcp://db:5432 -timeout 11s docker-entrypoint.sh
     ports:
       - 3000:3000
-    networks:
-      - tech-network
+    # networks:
+    #   - tech-network
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
@@ -28,9 +28,8 @@ services:
     environment:
       POSTGRES_DB: db_tech
       POSTGRES_PASSWORD: postgres
-    networks:
-      - tech-network
-
-networks:
-  tech-network:
-    driver: bridge
+    # networks:
+    #   - tech-network
+# networks:
+#   tech-network:
+#     driver: bridge
