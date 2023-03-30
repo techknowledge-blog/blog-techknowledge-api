@@ -1,15 +1,6 @@
-import {
-  Controller,
-  Get,
-  Param,
-  Post,
-  Body,
-  Put,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { Post as PostModel } from '@prisma/client';
-import { CreatePostDto } from './dto/create-post.dto';
 
 @Controller()
 export class PostsController {
@@ -45,10 +36,10 @@ export class PostsController {
     });
   }
 
-  @Post('post')
-  async createDraft(@Body() postData: CreatePostDto): Promise<PostModel> {
-    return this.postService.createPost(postData);
-  }
+  // @Post('post')
+  // async createDraft(@Body() postData: CreatePostDto): Promise<PostModel> {
+  //   return this.postService.createPost(postData);
+  // }
 
   // @Post('user')
   // async signupUser(
@@ -57,16 +48,16 @@ export class PostsController {
   //   return this.userService.createUser(userData);
   // }
 
-  @Put('publish/:id')
-  async publishPost(@Param('id') id: string): Promise<PostModel> {
-    return this.postService.updatePost({
-      where: { id: Number(id) },
-      data: { isPublished: true },
-    });
-  }
+  // @Put('publish/:id')
+  // async publishPost(@Param('id') id: string): Promise<PostModel> {
+  //   return this.postService.updatePost({
+  //     where: { id: Number(id) },
+  //     data: { isPublished: true },
+  //   });
+  // }
 
-  @Delete('post/:id')
-  async deletePost(@Param('id') id: string): Promise<PostModel> {
-    return this.postService.deletePost({ id: Number(id) });
-  }
+  // @Delete('post/:id')
+  // async deletePost(@Param('id') id: string): Promise<PostModel> {
+  //   return this.postService.deletePost({ id: Number(id) });
+  // }
 }
