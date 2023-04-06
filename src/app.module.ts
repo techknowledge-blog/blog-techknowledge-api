@@ -1,12 +1,11 @@
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PostService } from './post.service';
+import { PostsService } from './modules/posts/posts.service';
 import { PrismaService } from './prisma.service';
-import { UserService } from './user.service';
+import { PostsModule } from './modules/posts/posts.module';
 
 @Module({
   imports: [
@@ -17,8 +16,10 @@ import { UserService } from './user.service';
     //     path: join(process.cwd(), 'src/graphql.ts'),
     //   },
     // }),
+    PostsModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PrismaService, UserService, PostService],
+  providers: [AppService, PrismaService, PostsService],
+  exports: [PrismaService],
 })
 export class AppModule {}
