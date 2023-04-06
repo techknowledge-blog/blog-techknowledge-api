@@ -14,23 +14,30 @@ datasource db {
 }
 
 model User {
-  id    Int     @default(autoincrement()) @id
-  email String  @unique
-  name  String? 
-  posts Post[]
+  id         Int     @default(autoincrement()) @id
+  email      String  @unique
+  name       String
+  function   String
+  posts      Post[]
+  avatarLink String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+  deletedAt  DateTime?
 }
 
 model Post {
-  id          Int      @default(autoincrement()) @id
-  title       String
-  authorId    Int?
-  author      User?    @relation(fields: [authorId], references: [id])
-  categoryId  Int?
-  content     String
-  isPublished   Boolean? @default(false)
-  previewContent String
-  slug String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-  deletedAt DateTime?
+  id               Int      @default(autoincrement()) @id
+  title            String
+  authorId         Int
+  author           User     @relation(fields: [authorId], references: [id])
+  categoryId       Int?
+  content          String
+  isPublished      Boolean? @default(false)
+  previewContent   String
+  slug             String
+  coverImageLink   String?
+  previewImageLink String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @default(now())
+  deletedAt        DateTime?
 }
