@@ -3,4 +3,9 @@ import { Controller, Get } from '@nestjs/common';
 export class AppController {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
+
+  @Get()
+  getHello(): string {
+    return 'hello!!!';
+  }
 }
