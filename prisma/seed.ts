@@ -19,6 +19,31 @@ async function main() {
     },
   });
 
+  //CATEGORY
+  const CATEGORY_REFLEXION = await prisma.category.create({
+    data: {
+      name: 'reflexões',
+    },
+  });
+
+  const CATEGORY_OLYMPIAD = await prisma.category.create({
+    data: {
+      name: 'olimpíada',
+    },
+  });
+
+  const CATEGORY_TECHKNOWLEDGE = await prisma.category.create({
+    data: {
+      name: 'techknowledge',
+    },
+  });
+
+  const CATEGORY_JAVASCRIPT = await prisma.category.create({
+    data: {
+      name: 'JavaScript',
+    },
+  });
+
   //POSTS
 
   const FAZ_FUNCIONAR_E_DEPOIS_MELHORA_SERA_MESMO = await prisma.post.create({
@@ -31,6 +56,7 @@ async function main() {
         'Nesse post vamos abordar um pouco sobre um assunto bastante comum em nossa área onde nos deparamos constantemente com esse cenário. Será que fazer funcionar e depois melhorar é a melhor forma de se resolver um problema? Vem descobrir comigo.',
       slug: 'faz-funcionar-e-depois-melhora-sera-mesmo',
       isPublished: true,
+      categoryId: 1,
     },
   });
 
@@ -44,6 +70,7 @@ async function main() {
         'O que é a Olimpíada do Conhecimento? Como é o processo de treinamento dos competidores? Isso e muito mais, vamos ver no decorrer deste post, sobre essa competição que tem gerado um impacto na vida de muitos competidores que passam por ela.',
       slug: 'olimpiada-do-conhecimento',
       isPublished: true,
+      categoryId: 2,
     },
   });
 
@@ -57,6 +84,7 @@ async function main() {
         'Como surgiu a ideia de criar esse blog? Qual a finalidade do nosso projeto? Nesse primeiro post, vamos nos apresentar e  falar um pouco da motivação por trás do TechKnowledge!',
       slug: 'techknowledge-ponto-zero',
       isPublished: true,
+      categoryId: 3,
     },
   });
 
@@ -70,10 +98,17 @@ async function main() {
         'Quem é a Leticia e o Mikael? São dois aventureiros? São dois alíenigenas de outro planeta? Ou são só dois devs que gostam muito de tecnologia? Vem descubrir um pouco sobre a jornada desses dois jovens devs.',
       slug: 'quem-somos-nos',
       isPublished: true,
+      categoryId: 3,
     },
   });
 
   console.log({ mikkaiser, leticia });
+  console.log({
+    CATEGORY_REFLEXION,
+    CATEGORY_OLYMPIAD,
+    CATEGORY_TECHKNOWLEDGE,
+    CATEGORY_JAVASCRIPT,
+  });
   console.log({
     FAZ_FUNCIONAR_E_DEPOIS_MELHORA_SERA_MESMO,
     OLIMPIADA_DO_CONHECIMENTO,
