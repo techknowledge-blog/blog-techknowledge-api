@@ -34,7 +34,7 @@ model Post {
   content          String
   isPublished      Boolean?  @default(false)
   coverImageLink   String?
-  slug             String
+  slug             String    @unique
   previewImageLink String?
   authorId         Int
   categoryId       Int

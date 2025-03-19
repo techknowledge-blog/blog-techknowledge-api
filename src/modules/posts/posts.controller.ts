@@ -1,4 +1,4 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { Post as PostModel } from '@prisma/client';
 
@@ -31,10 +31,8 @@ export class PostsController {
     });
   }
 
-  @Get(':id')
-  async findPostById(
-    @Param('id', ParseIntPipe) id: number,
-  ): Promise<PostModel> {
-    return this.postService.post({ id });
+  @Get(':slug')
+  async findPostBySlug(@Param('slug') slug: string): Promise<PostModel> {
+    return this.postService.findPostBySlug(slug);
   }
 }
