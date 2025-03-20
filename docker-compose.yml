@@ -11,7 +11,7 @@ services:
     environment:
       - URL_DATABASE=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
     volumes:
-      - ./nestjs-app:/usr/src/app
+      - .:/usr/src/app
     tty: true
     networks:
       - techknowledge-network

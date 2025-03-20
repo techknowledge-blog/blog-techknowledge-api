@@ -22,7 +22,7 @@ RUN npx prisma generate
 RUN npm run build
 
 # Remove unnecessary files
-RUN npm prune --omit=dev
+RUN npm prune --omit=dev --legacy-peer-deps
 
 # Step 2: Create a lightweight production image
 FROM node:23 AS production
