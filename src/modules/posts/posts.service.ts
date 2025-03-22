@@ -6,11 +6,21 @@ import { Post, Prisma } from '@prisma/client';
 export class PostsService {
   constructor(private prisma: PrismaService) {}
 
-  async post(
-    postWhereUniqueInput: Prisma.PostWhereUniqueInput,
-  ): Promise<Post | null> {
+  async findPostBySlug(slug: string): Promise<Post | null> {
     return this.prisma.post.findUnique({
-      where: postWhereUniqueInput,
+      where: { slug },
+      include: {
+        category: {
+          select: {
+            name: true,
+          },
+        },
+        author: {
+          select: {
+            name: true,
+          },
+        },
+      },
     });
   }
 
@@ -28,6 +38,18 @@ export class PostsService {
       cursor,
       where,
       orderBy,
+      include: {
+        category: {
+          select: {
+            name: true,
+          },
+        },
+        author: {
+          select: {
+            name: true,
+          },
+        },
+      },
     });
   }
 
