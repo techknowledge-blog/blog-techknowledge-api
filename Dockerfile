@@ -33,7 +33,6 @@ WORKDIR /app
 # Copy built application and node_modules from the builder stage
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/.env ./.env
 COPY --from=builder /app/package.json ./
 
 # Set environment variables
