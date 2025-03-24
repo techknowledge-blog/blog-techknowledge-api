@@ -40,6 +40,8 @@ jobs:
             cd ~/projects/blog-techknowledge
             docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}            
             docker pull mikkaiserdev/techknowledge-api-nest-container:${{ needs.build.outputs.timestamp }}
-            sed -i 's/^IMAGE_TAG=.*/IMAGE_TAG=${{ needs.build.outputs.timestamp }}/' .env 
+            sed -i 's/^IMAGE_TAG=.*/IMAGE_TAG=${{ needs.build.outputs.timestamp }}/' .env
             docker compose down
+            docker rm -f postgres-container
+            docker rm -f techknowledge-api-nest-container
             docker compose up -d --force-recreate
