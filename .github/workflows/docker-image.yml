@@ -1,6 +1,6 @@
 name: Docker Image CI
 
-#Adding new line
+#sed command - replacing the value of .env file - variable IMAGE_TAG for the latest one
 on:  
   push:    
     branches: [ "main" ]  
@@ -39,6 +39,7 @@ jobs:
           script: |     
             cd ~/projects/blog-techknowledge
             docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}            
-            docker compose pull --ignore-pull-failures
-            docker image rm mikkaiserdev/techknowledge-api-nest-container:latest || true
-            docker compose up -d --force-recreate
+            docker pull mikkaiserdev/techknowledge-api-nest-container:${{ needs.build.outputs.timestamp }}
+            sed -i 's/^IMAGE_TAG=.*/IMAGE_TAG=${{ needs.build.outputs.timestamp }}/' .env 
+            docker-compose down
+            docker-compose up -d --force-recreate
