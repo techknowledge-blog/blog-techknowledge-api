@@ -39,6 +39,6 @@ jobs:
           script: |     
             cd ~/projects/blog-techknowledge
             docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}            
-            docker-compose pull --ignore-pull-failures
+            docker compose pull --ignore-pull-failures
             docker image rm mikkaiserdev/techknowledge-api-nest-container:latest || true
-            docker-compose up -d --force-recreate
+            docker compose up -d --force-recreate
