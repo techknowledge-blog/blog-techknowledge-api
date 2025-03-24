@@ -36,9 +36,9 @@ jobs:
           host: ${{ secrets.PROD_SERVER_IP }}          
           username: ${{ secrets.SERVER_USERNAME }}          
           key: ${{ secrets.SERVER_PRIVATE_KEY }}          
-          script: |            
+          script: |     
+            cd ~/projects/blog-techknowledge
             docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}            
-            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/techknowledge-api-nest-container:${{ needs.build.outputs.timestamp }}            
-            docker stop techknowledge-api-nest-container || true            
-            docker rm techknowledge-api-nest-container || true            
-            docker run -d -p 9089:8080 --name techknowledge-api-nest-container ${{ secrets.DOCKER_HUB_USERNAME }}/techknowledge-api-nest-container:${{ needs.build.outputs.timestamp }}
+            docker-compose pull --ignore-pull-failures
+            docker image rm mikkaiserdev/techknowledge-api-nest-container:latest || true
+            docker-compose up -d --force-recreate
