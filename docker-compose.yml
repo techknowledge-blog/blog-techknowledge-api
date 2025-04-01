@@ -1,13 +1,10 @@
 services:
   nestjs-app:
     container_name: techknowledge-api-nest-container
-    image: techknowledge-api-nest
+    image: mikkaiserdev/techknowledge-api-nest-container:${IMAGE_TAG}
     restart: always
     ports:
       - "3000:3000"
-    build:
-      context: .
-      dockerfile: Dockerfile
     environment:
       - URL_DATABASE=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
     volumes:
@@ -19,7 +16,7 @@ services:
       - postgres
 
   postgres:
-    image: postgres:latest
+    image: postgres:17.4
     container_name: postgres-container
     restart: always
     environment:
@@ -31,12 +28,12 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-    - techknowledge-network
-
+      - techknowledge-network
 
 networks:
   techknowledge-network:
-    driver: bridge
+    external: true
+    name: techknowledge-network
 
 volumes:
   postgres_data:
