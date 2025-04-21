@@ -3,16 +3,20 @@ const prisma = new PrismaClient();
 
 async function main() {
   //USERS
-  const mikkaiser = await prisma.user.create({
-    data: {
+  const mikkaiser = await prisma.user.upsert({
+    where: { email: 'mikaelrsimoes19@gmail.com' },
+    update: {},
+    create: {
       name: 'Mikael Ribeiro',
       email: 'mikaelrsimoes19@gmail.com',
       function: 'Desenvolvedor Full Stack',
     },
   });
 
-  const leticia = await prisma.user.create({
-    data: {
+  const leticia = await prisma.user.upsert({
+    where: { email: 'contatoleticiadia@gmail.com' },
+    update: {},
+    create: {
       name: 'Leticia Dias',
       email: 'contatoleticiadia@gmail.com',
       function: 'Desenvolvedora Full Stack',
@@ -20,34 +24,48 @@ async function main() {
   });
 
   //CATEGORY
-  const CATEGORY_REFLEXION = await prisma.category.create({
-    data: {
-      name: 'reflexões',
-    },
+  const CATEGORY_REFLEXION = await prisma.category.upsert({
+    where: { id: 1 },
+    update: {},
+    create: { name: 'reflexões' },
   });
 
-  const CATEGORY_OLYMPIAD = await prisma.category.create({
-    data: {
-      name: 'olimpíada',
-    },
+  const CATEGORY_OLYMPIAD = await prisma.category.upsert({
+    where: { id: 2 },
+    update: {},
+    create: { name: 'olimpíada' },
   });
 
-  const CATEGORY_TECHKNOWLEDGE = await prisma.category.create({
-    data: {
-      name: 'techknowledge',
-    },
+  const CATEGORY_TECHKNOWLEDGE = await prisma.category.upsert({
+    where: { id: 3 },
+    update: {},
+    create: { name: 'techknowledge' },
   });
 
-  const CATEGORY_JAVASCRIPT = await prisma.category.create({
-    data: {
-      name: 'JavaScript',
-    },
+  const CATEGORY_JAVASCRIPT = await prisma.category.upsert({
+    where: { id: 4 },
+    update: {},
+    create: { name: 'JavaScript' },
+  });
+
+  const CATEGORY_CHALLENGE = await prisma.category.upsert({
+    where: { id: 5 },
+    update: {},
+    create: { name: 'challenges' },
+  });
+
+  const CATEGORY_CLOUDCOMPUTING = await prisma.category.upsert({
+    where: { id: 6 },
+    update: {},
+    create: { name: 'cloud computing' },
   });
 
   //POSTS
 
-  const FAZ_FUNCIONAR_E_DEPOIS_MELHORA_SERA_MESMO = await prisma.post.create({
-    data: {
+  const FAZ_FUNCIONAR_E_DEPOIS_MELHORA_SERA_MESMO = await prisma.post.upsert({
+    where: { id: 1 },
+    update: {},
+    create: {
       title: '"Faz funcionar e depois melhora." Será mesmo?',
       authorId: 2,
       content: `Cheguei à conclusão de que esse pensamento pode ser perigoso, porque quando pensamos assim, acabamos nos acostumando apenas em fazer funcionar e nos esquecemos de melhorar depois. Isso é algo muito comum, principalmente para nós desenvolvedores, mas que em determinadas situações acaba fazendo sentido, por diversos motivos.
@@ -97,8 +115,10 @@ Por isso, eu hoje não levo esse pensamento comigo. Posso até demorar um pouco 
     },
   });
 
-  const OLIMPIADA_DO_CONHECIMENTO = await prisma.post.create({
-    data: {
+  const OLIMPIADA_DO_CONHECIMENTO = await prisma.post.upsert({
+    where: { id: 2 },
+    update: {},
+    create: {
       title: 'Olímpiada do Conhecimento',
       authorId: 2,
       content: `### O que é a Olímpiada do Conhecimento?
@@ -134,8 +154,10 @@ No próximo post vou contar como eu (Leticia) e o Mikael nos tornamos competidor
     },
   });
 
-  const TECHKNOWLEDGE_PONTO_ZERO = await prisma.post.create({
-    data: {
+  const TECHKNOWLEDGE_PONTO_ZERO = await prisma.post.upsert({
+    where: { id: 3 },
+    update: {},
+    create: {
       title: 'Techknowledge: Ponto Zero',
       authorId: 1,
       content: `Uma das melhores formas (se não a melhor) de aprender um assunto é ensinando. Transmitindo o conhecimento que nos foi passado. E nos vimos na necessidade de compartilhar nossa experiência, tanto como competidores da Olimpíada do Conhecimento, quanto como desenvolvedores. Demonstrar quais são os problemas que encontramos no dia-a-dia e como os resolvemos. Dessa necessidade, surgiu o Techknowledge!
@@ -175,8 +197,10 @@ Esse é apenas um dos muitos posts que vamos documentar nossa experiência duran
     },
   });
 
-  const QUEM_SOMOS_NOS = await prisma.post.create({
-    data: {
+  const QUEM_SOMOS_NOS = await prisma.post.upsert({
+    where: { id: 4 },
+    update: {},
+    create: {
       title: 'Quem somos nós?',
       authorId: 2,
       content: `### Quem é você Leticia Dias?
@@ -204,18 +228,56 @@ Para mais informações, aqui está meu Linkedin: https://www.linkedin.com/in/mi
     },
   });
 
+  const CHALLENGE_CALCULATOR = await prisma.post.upsert({
+    where: { id: 5 },
+    update: {},
+    create: {
+      title: 'Construa Sua Própria Calculadora do Zero!',
+      authorId: 2,
+      content: `Quando estamos começando na programação, é muito importante praticar os fundamentos. Esses conceitos são a base de tudo, e exercitá-los ajuda não só a reforçar o conhecimento, mas também a entender melhor como a linguagem realmente funciona na prática.
+
+Por isso, desenvolvi esse desafio para praticar os conceitos básicos do javacript.
+
+O desafio é uma calculadora que criei usando HTML, CSS e JavaScript e a proposta é simples: desenvolver uma calculadora funcional, que permita realizar operações básicas como adição, subtração, multiplicação e divisão.
+
+**Esse desafio vai desenvolver também:**
+
+- Validação de entrada (para evitar erros com operadores duplicados ou pontos decimais)
+- Alternância de tema (modo claro e escuro com troca de ícones e imagens)
+- Responsividade
+
+Te convido a participar e construí-lo também. Bora codar? 🙂🚀
+
+**Link do repositório:** [Challenge: Calculator](https://github.com/leticiadia/calculator)
+
+**Observação:**
+
+Todas as instruções sobre o desafio, incluindo o layout, estão no README do repositório, assim como a solução.
+
+Bom desafio e te vejo no próximo! 💙`,
+      previewContent:
+        'Se você está aprendendo JavaScript ou quer revisar os fundamentos da linguagem com um projeto divertido e funcional, esse desafio é pra você!',
+      slug: 'challenge-calculator',
+      isPublished: true,
+      categoryId: 5,
+    },
+  });
+
   console.log({ mikkaiser, leticia });
   console.log({
     CATEGORY_REFLEXION,
     CATEGORY_OLYMPIAD,
     CATEGORY_TECHKNOWLEDGE,
     CATEGORY_JAVASCRIPT,
+    CATEGORY_CHALLENGE,
+    CATEGORY_CLOUDCOMPUTING,
   });
   console.log({
     FAZ_FUNCIONAR_E_DEPOIS_MELHORA_SERA_MESMO,
     OLIMPIADA_DO_CONHECIMENTO,
     TECHKNOWLEDGE_PONTO_ZERO,
     QUEM_SOMOS_NOS,
+    CHALLENGE_CALCULATOR,
   });
 }
 
