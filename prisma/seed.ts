@@ -263,6 +263,66 @@ Bom desafio e te vejo no próximo! 💙`,
     },
   });
 
+  const CHALLENGE_SHOPPING_CART = await prisma.post.upsert({
+    where: { id: 6 },
+    update: {},
+    create: {
+      title: 'Carrinho de Compras',
+      authorId: 2,
+      content: `Você já parou para pensar em como um projeto simples pode evoluir e o quanto você pode aprender construindo-o?
+
+Foi com esse pensamento que eu criei o Challenge Shopping Cart, um desafio dividido em três níveis: fácil, médio e difícil. A ideia central é mostrar como podemos desenvolver um projeto simples e aos poucos ir evoluindo-o.
+
+### O que você vai encontrar nesse desafio?
+
+Cada nível do desafio representa uma etapa da evolução do projeto. Ao longo do caminho, você vai colocar em prática seus conhecimentos em HTML, CSS e JavaScript, enquanto desenvolve ainda mais suas habilidades em programação.
+
+### Sobre o desafio
+
+**O desafio, como mencionado anteriormente, é dividido em três níveis, sendo eles:**
+
+**Nível fácil:**
+
+- No primeiro nível, o foco é criar um carrinho simples, com adição de produtos e contagem de itens. Ideal para quem está começando e quer entender como funcionam os eventos e as variáveis na aplicação.
+
+**Nível médio:**
+
+- Aqui o desafio já sobe um degrau. Entram funcionalidades como remover itens do carrinho, atualizar a quantidade e trabalhar com manipulação da DOM.
+
+**Nível difícil:**
+
+- No último nível, você vai precisar lidar com mais lógica, armazenamento e persistência dos dados no localStorage, redirecionamento entre páginas e muito mais.
+
+### Instruções e soluções
+
+**Cada desafio está separado em uma pasta específica, contendo:**
+
+- Um arquivo com as instruções detalhadas do que deve ser feito;
+- A solução do desafio, caso você queira comparar com o que fez ou estudar uma forma de resolver.
+
+Assim, você pode aprender no seu ritmo, explorando cada fase do projeto e entendendo o que pode ser melhorado em cada etapa.
+
+### Link
+
+**Link do repositório:** [Challenge - Carrinho de Compras](https://github.com/leticiadia/shopping-cart)
+
+### Conclusão
+
+Praticar com projetos reais, mesmo que pequenos, faz toda a diferença! Esse tipo de exercício te mostra que não é preciso construir algo gigante para evoluir, basta começar, e aos poucos, ir melhorando.
+
+Desafios como esse reforçam os fundamentos e mostram que dá sim para aprender se divertindo com código. Bora praticar?
+
+Se você fizer, me marca e o Mikael também. Queremos ver o resultado de vocês também 😊🚀
+
+Bom desafio e te vejo no próximo! 💙`,
+      previewContent:
+        'Se você quer entender como um projeto simples pode evoluir em diferentes níveis de complexidade e aplicar na prática os fundamentos do JavaScript, esse desafio de Carrinho de Compras é pra você.',
+      slug: 'challenge-shopping-cart',
+      isPublished: true,
+      categoryId: 5,
+    },
+  });
+
   console.log({ mikkaiser, leticia });
   console.log({
     CATEGORY_REFLEXION,
@@ -278,6 +338,7 @@ Bom desafio e te vejo no próximo! 💙`,
     TECHKNOWLEDGE_PONTO_ZERO,
     QUEM_SOMOS_NOS,
     CHALLENGE_CALCULATOR,
+    CHALLENGE_SHOPPING_CART,
   });
 }
 
