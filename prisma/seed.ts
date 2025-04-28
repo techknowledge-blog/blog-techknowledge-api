@@ -23,6 +23,16 @@ async function main() {
     },
   });
 
+  const monique = await prisma.user.upsert({
+    where: { email: 'nickyalbuquerque2008@gmail.com' },
+    update: {},
+    create: {
+      name: 'Monique Campos',
+      email: 'nickyalbuquerque2008@gmail.com',
+      function: 'Desenvolvedora Frontend',
+    },
+  });
+
   //CATEGORY
   const CATEGORY_REFLEXION = await prisma.category.upsert({
     where: { id: 1 },
@@ -323,7 +333,117 @@ Bom desafio e te vejo no próximo! 💙`,
     },
   });
 
-  console.log({ mikkaiser, leticia });
+  const DEV_FRONTEND = await prisma.post.upsert({
+    where: { id: 7 },
+    update: {},
+    create: {
+      title: 'Desafios na Trajetória de um Desenvolvedor Frontend',
+      authorId: 3,
+      content: `A carreira de desenvolvedor frontend é cheia de momentos empolgantes, mas
+também de muitos desafios que nem sempre são comentados. Quando a gente
+escolhe seguir essa área, é comum imaginar que será apenas sobre construir
+interfaces bonitas e responsivas, mas a realidade é bem mais complexa e cheia de
+detalhes que exigem muita dedicação e aprendizado contínuo.
+
+### A curva de aprendizado é intensa
+
+No início da jornada, um dos primeiros desafios é entender que **HTML, CSS e
+JavaScript**, que parecem simples separadamente, viram um universo de
+possibilidades e problemas quando combinados. Responsividade, acessibilidade,
+performance, SEO, compatibilidade entre navegadores… tudo isso passa a fazer
+parte do nosso vocabulário e do nosso dia a dia.
+
+Aprender boas práticas de semântica HTML, dominar seletores CSS mais avançados
+e entender a manipulação do DOM com JavaScript nativo é só o começo. O tempo
+todo surgem novos padrões, como CSS Grid e Flexbox, que mudam a maneira como
+montamos layouts.
+
+### A evolução constante das tecnologias
+
+Outro ponto é a velocidade com que surgem novas ferramentas, frameworks e boas
+práticas. Hoje é React, amanhã é Angular, depois vem o Svelte... e assim vai. A gente
+nunca pode se acomodar. Cada novo framework traz novas convenções, novas
+maneiras de pensar em componentes, gerenciar estado, lidar com o roteamento de
+páginas.
+
+A famigerada **"fadiga de JavaScript"** é real e lidar com ela exige disciplina para focar no que realmente agrega valor ao que você está construindo. Saber filtrar o que
+estudar e em que momento é uma habilidade importante.
+
+### Dominar o JavaScript de verdade
+
+Muita gente começa decorando pequenos trechos de código, mas cedo ou tarde
+chega o momento em que é preciso entender o JavaScript a fundo. Conceitos como
+closures, promessas, async/await, manipulação do DOM, tratamento de eventos,
+funções puras, imutabilidade, recursividade e padrões de projeto passam a ser
+exigidos.
+
+Frameworks escondem muita complexidade, mas quem realmente entende
+JavaScript consegue resolver problemas mais complexos, otimizar aplicações e
+construir soluções mais robustas.
+
+### Integração com APIs e backend
+
+Não basta apenas fazer a página bonita funcionar. Em projetos reais, a comunicação
+com servidores é inevitável. É preciso entender como consumir APIs REST e
+GraphQL, lidar com autenticação via tokens JWT, tratamento de erros HTTP,
+atualização dinâmica de dados e cache.
+
+Além disso, muitas vezes precisamos entender conceitos de backend como estrutura
+de banco de dados, modelagem de informações e performance de consultas, para
+criar interfaces que realmente atendam às necessidades do usuário de forma
+eficiente.
+
+### Experiência do usuário (UX) e acessibilidade
+
+A preocupação com quem está usando o que construímos é essencial.
+Desenvolvedores frontend precisam pensar na experiência do usuário (UX) desde o
+primeiro momento: cores, espaçamento, legibilidade, navegabilidade, feedbacks
+visuais...
+
+Além disso, acessibilidade é um compromisso ético e legal. Garantir que
+pessoas com deficiências consigam navegar usando leitores de tela, teclados ou
+dispositivos adaptados deve ser uma prioridade. Práticas como o uso correto de ARIA
+roles, contraste de cores adequado, textos alternativos para imagens e navegação por teclado precisam ser aplicadas no código.
+
+### Pressão, prazos apertados e expectativas
+
+Nem sempre temos o tempo que gostaríamos para fazer tudo da melhor maneira.
+Muitas vezes, precisamos conciliar qualidade e velocidade, tomando decisões rápidas
+sem comprometer o resultado final. Saber negociar prazos, justificar escolhas
+técnicas para o time e stakeholders, lidar com feedbacks (nem sempre tão amigáveis)
+e trabalhar bem em equipe são habilidades técnicas e emocionais igualmente
+importantes.
+
+### Organização de projetos e escalabilidade
+
+Conforme os projetos crescem, o frontend precisa se organizar. Arquiteturas como
+componentização, separação de responsabilidades, gerenciamento de estado global,
+roteamento, otimização de bundle, lazy loading e testes automatizados se tornam
+cruciais.
+
+Ter boas práticas de versionamento (Git), padronização de código (linting, prettier),
+documentação clara e revisões de código (code reviews) também impactam
+diretamente a manutenção e escalabilidade da aplicação.
+
+### Conclusão
+
+Ser desenvolvedor frontend é encarar uma montanha-russa constante de
+aprendizados e desafios. Cada novo projeto traz suas próprias particularidades,
+exigindo adaptação, resiliência e muita sede de conhecimento. Mas é justamente essa dinâmica que torna a profissão tão empolgante. Cada nova tecnologia dominada, cada problema resolvido, cada interface que encanta o usuário, é uma vitória que faz todo o esforço valer a pena.
+
+O segredo está em nunca parar de aprender, manter a curiosidade viva e,
+principalmente, lembrar que errar faz parte do processo. O importante é continuar
+evoluindo, um código de cada vez, construindo não apenas páginas, mas
+experiências memoráveis.`,
+      previewContent:
+        'Ser desenvolvedor frontend é desafiador devido às rápidas mudanças tecnológicas e novas ferramentas. Se você está começando ou já atua na área, este conteúdo é para você!',
+      slug: 'desafios-desenvolvedor-frontend',
+      isPublished: true,
+      categoryId: 1,
+    },
+  });
+
+  console.log({ mikkaiser, leticia, monique });
   console.log({
     CATEGORY_REFLEXION,
     CATEGORY_OLYMPIAD,
@@ -339,6 +459,7 @@ Bom desafio e te vejo no próximo! 💙`,
     QUEM_SOMOS_NOS,
     CHALLENGE_CALCULATOR,
     CHALLENGE_SHOPPING_CART,
+    DEV_FRONTEND,
   });
 }
 
