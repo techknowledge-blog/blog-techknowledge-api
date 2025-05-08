@@ -33,6 +33,16 @@ async function main() {
     },
   });
 
+  const leornado = await prisma.user.upsert({
+    where: { email: 'leohas.dev@gmail.com' },
+    update: {},
+    create: {
+      name: 'Leornado Henrique',
+      email: 'leohas.dev@gmail.com',
+      function: 'Full Stack Developer',
+    },
+  });
+
   //CATEGORY
   const CATEGORY_REFLEXION = await prisma.category.upsert({
     where: { id: 1 },
@@ -443,7 +453,22 @@ experiências memoráveis.`,
     },
   });
 
-  console.log({ mikkaiser, leticia, monique });
+  const YOU_LEARN_FROM_YOUR_MISTAKES = await prisma.post.upsert({
+    where: { id: 8 },
+    update: {},
+    create: {
+      title: 'Errando é Que Se Aprende',
+      authorId: 4,
+      content: ``,
+      previewContent:
+        'Erros na programação podem ser frustrantes, mas também são mestres valiosos. Quer descobrir como transformar cada falha em um passo para evoluir? Vem conferir o post!',
+      slug: 'errando-que-se-aprende',
+      isPublished: true,
+      categoryId: 1,
+    },
+  });
+
+  console.log({ mikkaiser, leticia, monique, leornado });
   console.log({
     CATEGORY_REFLEXION,
     CATEGORY_OLYMPIAD,
@@ -460,6 +485,7 @@ experiências memoráveis.`,
     CHALLENGE_CALCULATOR,
     CHALLENGE_SHOPPING_CART,
     DEV_FRONTEND,
+    YOU_LEARN_FROM_YOUR_MISTAKES,
   });
 }
 
