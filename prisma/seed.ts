@@ -43,6 +43,16 @@ async function main() {
     },
   });
 
+  const pedroMiguel = await prisma.user.upsert({
+    where: { email: 'pedromiguelmvs.dev@gmail.com' },
+    update: {},
+    create: {
+      name: 'Pedro Miguel',
+      email: 'pedromiguelmvs.dev@gmail.com',
+      function: 'Desenvolvedor Sênior e Engenheiro de Software',
+    },
+  });
+
   //CATEGORY
   const CATEGORY_REFLEXION = await prisma.category.upsert({
     where: { id: 1 },
@@ -468,7 +478,55 @@ experiências memoráveis.`,
     },
   });
 
-  console.log({ mikkaiser, leticia, monique, leornado });
+  const PRATICE_HOW_TO_BECOME_A_DEVELOPER = await prisma.post.upsert({
+    where: { id: 9 },
+    update: {},
+    create: {
+      title: 'PRATIQUE! Como ser um desenvolvedor.',
+      authorId: 5,
+      content: `Se você está começando na área de desenvolvimento web, provavelmente já se deparou com uma enxurrada de conceitos novos, muitos dos quais talvez você ainda não entenda direito, mas deixa eu te antecipar que isso é perfeitamente normal. Às vezes, o mais difícil é saber por onde começar ou o que priorizar. Se esse é o seu caso, talvez este texto te ajude. A gente vai falar sobre o que realmente faz a diferença no aprendizado: a prática. Na verdade, ela é mais complicada do que parece. Vai lá pegar um café e um petisco e volta quando estiver pronto, eu te espero. Tudo certo? Vamos nessa.
+
+### Tutorial não é prática
+
+Vou começar com um balde de água fria: aqueles tutoriais que você salvou para assistir depois provavelmente não vão te ajudar tanto assim no começo. Não porque são ruins, mas porque programação é uma área que exige prática. Muita prática.
+
+Essa é uma daquelas verdades que demoram para cair a ficha, comigo foi assim também, mesmo depois de anos estudando. Mas em algum momento você percebe que está travado, vendo vídeo atrás de vídeo no YouTube, e não progride. E aí bate a frustração, aquela sensação de que **“isso não é para mim”**. Spoiler: é sim, só falta você botar a mão na massa.
+
+### Quando tudo virou a chave para mim
+
+Deixa eu te contar quando isso mudou para mim: era por volta de 2018 e eu era um belíssimo estudante de programação, cheio de dúvidas sobre o que o tal do Node.js V10 era capaz de fazer. Naquele ponto, eu só sabia subir um servidor simples para servir arquivos com o express, esse foi o máximo que eu já tinha chegado. Foi quando um amigo me procurou com um problema: a comunidade gamer dele no Discord tinha passado de dez mil membros e organizar os conteúdos estava virando um caos. Ele queria saber se eu podia criar uma CMS para organizar tudo aquilo.
+
+Hoje eu posso dizer que tudo que eu aprendi sobre arquitetura ao longo dos anos começou naquela noite de sexta-feira quando eu comecei o projeto. Eu tinha um objetivo claro e sabia o que precisava ser feito. Mas, sinceramente? Eu não sabia quase nada de Node. Sério, quase nada. E ainda assim eu fui atrás de acordo com o que eu ia precisando encaixar na plataforma. Pesquisei, testei, errei e fui aprendendo no caminho. Aquele projeto virou meu laboratório, e foi ali que comecei a entender de fato conceitos que hoje fazem parte do meu dia a dia como desenvolvedor.
+
+### Você não precisa saber tudo
+
+O que eu quero dizer com tudo que eu já te contei até aqui é: **você não precisa saber tudo sobre tudo antes de começar**. Temas como algoritmos e estruturas de dados são importantes e excelentes formas de se começar, é claro, mas a forma como a gente aprende nem sempre segue uma ordem e tá tudo bem! Às vezes, o melhor jeito de aprender é começar um projeto que te empolgue. Algo que te faça querer abrir o computador todos os dias e focar naquilo.
+
+Com o tempo, as lacunas de conhecimento vão sendo preenchidas. Você vai adicionando funcionalidades, esbarrando em problemas, pesquisando soluções. Vai ler um artigo sobre arquitetura e perceber que pode aplicar aquilo no seu projeto. E assim, aos poucos, vai consolidando o que aprendeu. No fim das contas, o que mais ensina é o que você faz com o que já sabe.
+
+### Frustração faz parte do processo
+
+Vai ter dia que nada vai funcionar. Vai ter código que vai te fazer perder horas por conta de um ponto e vírgula esquecido. Vai ter bug que some quando você tenta mostrar para alguém. Esses momentos são normais e importantes. Aprender a programar é aprender a lidar com frustração. Mas cada vez que você passa por isso, você sai mais preparado. Resolver bugs, entender erros, refatorar um código bagunçado... tudo isso é prática real. E é assim que se aprende.
+
+### Faça projetos simples (e depois complique)
+
+Não precisa começar tentando construir o próximo Twitter. Às vezes, um projetinho simples resolve: um to-do list, um site de receitas, uma agenda pessoal. O importante é começar com algo que você consiga imaginar pronto, mesmo que só na sua cabeça, e que tenha alguma utilidade para você ou para as pessoas à sua volta. Depois que funcionar, aí sim você complica: coloca autenticação, faz deploy, cria testes, melhora a UI, separa em componentes... e por aí vai.
+
+### Para resumir tudo que foi dito até aqui
+
+Se você quer se tornar um bom desenvolvedor, precisa aceitar que o caminho passa pela prática e vai escalando até você saber exatamente o que fazer quando alguém te passa uma regra de negócio. Aprender vendo vídeos ou lendo livros técnicos pode até dar uma base, mas você só vai fixar de verdade quando colocar a mão no código.
+
+Escolha um projeto. Qualquer um. Algo que te motive. Algo que te faça pesquisar, testar, quebrar a cara e tentar de novo. Porque é nesse ciclo que você vai, aos poucos, virar um desenvolvedor de verdade. Até a próxima!
+      `,
+      previewContent:
+        'Se você está começando no desenvolvimento web, é normal se sentir perdido entre tantos conceitos novos. Mas sabe o que realmente faz a diferença no aprendizado? A prática. E ela pode ser mais desafiadora do que parece. Vem conferir o post!',
+      slug: 'pratique-como-ser-um-desenvolvedor',
+      isPublished: true,
+      categoryId: 1,
+    },
+  });
+
+  console.log({ mikkaiser, leticia, monique, leornado, pedroMiguel });
   console.log({
     CATEGORY_REFLEXION,
     CATEGORY_OLYMPIAD,
@@ -486,6 +544,7 @@ experiências memoráveis.`,
     CHALLENGE_SHOPPING_CART,
     DEV_FRONTEND,
     YOU_LEARN_FROM_YOUR_MISTAKES,
+    PRATICE_HOW_TO_BECOME_A_DEVELOPER,
   });
 }
 
