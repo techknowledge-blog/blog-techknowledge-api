@@ -526,6 +526,104 @@ Escolha um projeto. Qualquer um. Algo que te motive. Algo que te faça pesquisar
     },
   });
 
+  const HOW_I_LEARNED_TO_CREATE_MY_OWN_INTERFACES = await prisma.post.upsert({
+    where: { id: 10 },
+    update: {},
+    create: {
+      title: 'Como Aprendi a Criar Minhas Próprias Interfaces',
+      authorId: 2,
+      content: `Como uma boa backend, posso dizer que sou uma aprendiz no mundo do frontend e do design. Sempre atuei como Full Stack, mas com o foco mais no backend (PHP 💜). Em 2022, decidi me aventurar no universo do design e mergulhar mais fundo no frontend, porque queria criar e desenvolver os layouts dos meus próprios projetos. Se eu sabia alguma coisa de design? Muito pouco, quase nada, para ser sincera. Mas mesmo assim, abracei o desafio e comecei uma nova jornada. Vou contar um pouco sobre como aprendi a criar minhas próprias interfaces.
+
+Para essa leitura, recomendo um bom lofi, acompanhado de uma xícara de café ou chá. Preparado? Vamos para a leitura.
+
+### O início de tudo
+
+Se havia alguém sem nenhuma habilidade em design e longe de ser boa em frontend, essa pessoa era eu. Me considerava uma verdadeira sobrevivente, fazendo o possível com o que sabia. Os projetos em que eu atuava eram em Angular, os vídeos do canal da Loiane no YouTube foram meu verdadeiro salva-vidas, que me ajudaram muito nessa fase.
+
+Depois de um tempo trabalhando com backend, senti que já dominava bem a área e queria me desafiar em algo novo. Pensei: por que não o frontend? E não só isso, por que não criar também o design dos meus próprios projetos? Já tinha feito alguns clones de interfaces, mas com o tempo percebi que não estava, de fato, aprendendo. Sabe aquela sensação de estar só copiando e colando? Era exatamente assim que me sentia. Nada contra esse tipo de prática (acho super válida), mas eu queria ir além, pensar fora da caixa e desenvolver meus próprios projetos do zero, desde o design até a interface final.
+
+Bom, não foi tão fácil assim. Na primeira tentativa, fiquei horas olhando para uma tela branca, sem conseguir fazer nada. Tentei de novo e de novo e nada. Logo veio o pensamento de que isso não era para mim e que não ia conseguir.
+
+### Onde eu estava errando?
+
+No início do meu aprendizado, algo que me atrapalhou bastante foi a vontade de querer criar algo super elaborado, bonito e complexo, com aquele ar de ser super inovador. No entanto, essa mentalidade acabou me prejudicando, pois nunca conseguia sair do zero ou continuar um projeto por não estar bom e aí desistia.
+
+Em todo projeto era assim: passava horas tentando construir algo legal no Figma, mas nada parecia bom o suficiente. No fim, sobrava apenas uma tela branca ou uma tela não finalizada e um sentimento enorme de frustração. O mesmo acontecia quando tentava desenvolver uma interface, apesar de saber HTML, CSS e JavaScript, às vezes ficava muito travada, sem conseguir resolver um problema.
+
+> **Tenho muitos projetos não finalizados por isso.**
+
+Mas fica a pergunta: será que era mesmo necessário já começar assim, com tal pensamento? Se eu estava no início da minha jornada. E esse foi meu outro erro, não respeitei meu processo de aprendizagem, quis pular muitos degraus para avançar rápido, que esqueci do quanto a base era importante e que me faltava conhecimento também.
+
+Um exemplo disso foi eu ir para o Next.js sem ainda compreender conceitos importantes do React.
+
+### O que eu fiz para melhorar?
+
+Depois de entender onde estava errando tanto no frontend quanto na parte de design, comecei a estruturar melhor meus estudos. Primeiro, decidi começar com a parte do design, porque ter foco é algo importante; se colocar várias coisas para estudar ao mesmo tempo pode te atrapalhar.
+
+> **Dica importante:** Tenha um foco. Escolha uma área para estudar, divida em pequenas partes os conteúdos que tem dentro dela. Vai marcando um check, em cada assunto que você finalizou. No final, você vai perceber o quanto evoluiu. Lembra, você não precisa correr, não é uma maratona. Respeitar o seu processo de aprendizagem é importante.
+
+Continuando, um amigo me indicou o livro chamado Design Para Quem Não É Designer, que foi ótimo para começar a entender os fundamentos. Passei a estudar um pouco sobre UX/UI e a seguir profissionais da área. Também pensei: E se eu tentar começar fazendo algo bem simples? Sem tantos detalhes e não precisa ser bonito, só para começar a fluir e ver se consigo fazer algo. Lembro-me de fazer as artes dos conteúdos de tech que eu criava para o meu Instagram, e isso me ajudou e muito. E aos poucos fui evoluindo na parte do design.
+
+Com o tempo, fui tendo mais facilidade para desenhar e construir as telas no Figma, com isso vi que era hora de voltar ao frontend. Agora, estou fazendo uma revisão da linguagem do JavaScript, através de um canal no YouTube muito bom chamado **SuperSimpleDev** (recomendo). Ele ensina bastante sobre os conceitos básicos e avançados da linguagem.
+
+### Procure referências e sites para se inspirar
+
+Um erro que cometi também no início foi querer fazer algo realmente do zero, sem ter nenhuma influência de outros designs que já existiam. Um pensamento egoísta que acabou me prejudicando muito. Você pode construir layouts do zero, mas tendo referências que podem te ajudar nesse processo.
+
+**Sites como:**
+
+- [Pinterest](https://br.pinterest.com/)
+- [Dribbble](https://dribbble.com/)
+- [Behance](https://www.behance.net/)
+
+Se tornaram meus maiores aliados na hora de construir um design. Também acompanho alguns canais no YouTube, como:
+
+- [Design Systems London](https://www.youtube.com/@DesignSystemsLondon)
+- [awwwards.](https://www.youtube.com/@AwwwardsTV)
+
+Eventos de design também são uma fonte de inspiração para mim, tanto na identidade visual quanto nos slides das palestras. Eu também tenho vários sites salvos, que me inspiram em seu design. E ainda assim, consigo criar algo com a minha própria assinatura e design.
+
+### Lembre-se: você não precisa fazer tudo sozinho
+
+Procurei os meus amigos para me ajudarem. Sempre que eu termino um design ou a interface, envio para eles me passarem um feedback sobre como está ficando, o que eu posso melhorar e assim por diante.
+
+Também tenho colaborações em projetos com eles e um faz o code review do outro, o que é bem legal.
+
+Vale a pena ressaltar que nenhum dos meus amigos para quem eu envio até hoje meus designs é formado em Design. Se torna interessante, porque eu acabo tendo a visão deles como usuários. Já na parte do frontend, eu envio para meus amigos que atuam na área.
+
+Comecei a ter mentorias com um amigo que é designer. Durante as mentorias, fui compreendendo melhor sobre a área.
+
+Busque por amigos ou pessoas que podem te auxiliar em sua jornada.
+
+### A prática leva à "perfeição"
+
+Sem a prática, eu não teria chegado aonde cheguei hoje. Ela foi fundamental para todo esse processo e não leva à perfeição, mas vai te ajudar a evoluir. Não ganhei super poderes no design, pelo contrário, me pego em vários momentos, construindo uma tela, aí não dá certo e vou lá e tento de novo, aí olho para ela, percebo que posso melhorar e assim vai. Meu Figma não me deixa mentir (risos).
+
+![rascunho interface figma](/src/assets/images/ideias.png)
+
+O mesmo vale para o frontend. Continuo praticando.
+
+### Conclusão
+
+Sendo assim, deixo duas reflexões. Duas perguntas que me guiaram durante esse processo:
+
+- Todos os sites precisam ser completamente diferentes?
+
+- Eu realmente preciso criar algo 100% original para que funcione?
+
+A resposta que encontrei é: não. Padrões de design existem por um motivo, foram pensados por profissionais que estudaram profundamente a experiência do usuário. E seguir esses padrões não tira o valor da criação, pelo contrário: eles são a base para construir interfaces melhores e mais intuitivas.
+
+Hoje, criar minhas próprias interfaces se tornou menos assustador. Consigo pensar na estrutura, rascunhar as telas, montar no Figma e transformar isso em código com muito mais clareza e confiança. Ainda tenho muito a aprender, mas entendi que criar boas interfaces é um processo contínuo, feito de prática, estudo e coragem para começar, mesmo sem saber tudo.
+
+Se você também está nesse caminho, saiba que cada passo importa. E o próximo pode ser seu melhor layout até agora.`,
+      previewContent:
+        'Criar uma interface do zero pode parecer assustador no início, principalmente se você, como eu, veio do backend. Neste post, compartilho como comecei a aprender design, como passei a projetar minhas próprias telas, do rascunho ao desenvolvimento.',
+      slug: 'criando-minhas-interfaces',
+      isPublished: true,
+      categoryId: 1,
+    },
+  });
+
   console.log({ mikkaiser, leticia, monique, leornado, pedroMiguel });
   console.log({
     CATEGORY_REFLEXION,
@@ -545,6 +643,7 @@ Escolha um projeto. Qualquer um. Algo que te motive. Algo que te faça pesquisar
     DEV_FRONTEND,
     YOU_LEARN_FROM_YOUR_MISTAKES,
     PRATICE_HOW_TO_BECOME_A_DEVELOPER,
+    HOW_I_LEARNED_TO_CREATE_MY_OWN_INTERFACES,
   });
 }
 
