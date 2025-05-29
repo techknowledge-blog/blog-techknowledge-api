@@ -53,6 +53,16 @@ async function main() {
     },
   });
 
+  const lucasAlves = await prisma.user.upsert({
+    where: { email: 'lcsjalves@gmail.com' },
+    update: {},
+    create: {
+      name: 'Lucas Alves',
+      email: 'lcsjalves@gmail.com',
+      function: 'Desenvolvedor Mobile na Randstad Brasil',
+    },
+  });
+
   //CATEGORY
   const CATEGORY_REFLEXION = await prisma.category.upsert({
     where: { id: 1 },
@@ -88,6 +98,18 @@ async function main() {
     where: { id: 6 },
     update: {},
     create: { name: 'cloud computing' },
+  });
+
+  const CATEGORY_MOBILE = await prisma.category.upsert({
+    where: { id: 7 },
+    update: {},
+    create: { name: 'Mobile' },
+  });
+
+  const CATEGORY_CAREER = await prisma.category.upsert({
+    where: { id: 8 },
+    update: {},
+    create: { name: 'Carreira' },
   });
 
   //POSTS
@@ -624,7 +646,138 @@ Se você também está nesse caminho, saiba que cada passo importa. E o próximo
     },
   });
 
-  console.log({ mikkaiser, leticia, monique, leornado, pedroMiguel });
+  const THE_MOBILE_DEVELOPMENT_MARKET_2025 = await prisma.post.upsert({
+    where: { id: 11 },
+    update: {},
+    create: {
+      title:
+        'O mercado de desenvolvimento mobile em 2025: O que preciso saber?',
+      authorId: 6,
+      content: `A área de desenvolvimento mobile continua sendo uma das áreas mais aquecidas em tecnologia. Em 2025, a presença de smartphones em praticamente todas as mãos e os avanços das tecnologias móveis como 5G, IA embarcada e integração com dispositivos IoT tornam esse campo ainda mais promissor.
+
+Mas com o crescimento vêm os desafios: o mercado está mais competitivo do que nunca.
+
+**Neste artigo, trago um pouco da minha experiência de pelo menos 5 anos na área de desenvolvimento mobile, e ao final desse artigo você vai entender:**
+
+- O cenário atual do desenvolvimento mobile em 2025.
+
+- As principais oportunidades na área.
+
+- Como se destacar em um mercado competitivo?
+
+- Soft Skills essenciais para desenvolvedores mobile.
+
+- Dicas práticas para acelerar sua carreira como dev mobile e como continuar se desenvolvendo.
+
+### O cenário atual do desenvolvimento mobile em 2025
+
+O número de apps em uso continua crescendo em todo o mundo. Segundo dados recentes, usuários passam em média 5 a 6 horas por dia em aplicativos móveis, e empresas estão cada vez mais investindo na criação de soluções digitais próprias.
+
+**As tendências mais quentes em 2025 incluem:**
+
+- **Super Apps:** aplicativos únicos que oferecem e centralizam múltiplas funcionalidades (ex: pagamentos, compras, comunicação).
+
+- **IA embarcada:** uso de inteligência artificial diretamente no dispositivo, sem depender da nuvem.
+
+- **Apps conectados com IoT e wearables:** integração com dispositivos como smartwatches, fones e carros.
+
+- **Aplicativos com experiências imersivas:** realidade aumentada, interfaces por voz e microinterações mais sofisticadas.
+
+> A demanda é alta, mas a concorrência também.
+
+### As principais oportunidades na área
+
+**Apesar da competitividade, há espaço de sobra para novos talentos. Algumas áreas em alta:**
+
+- **Desenvolvimento híbrido (React Native, Flutter, Kotlin Multiplataform):** a procura por devs que dominam tecnologias híbridas aumentou significativamente devido à possibilidade de criar apps nativos para Android e iOS com uma única base de código.
+
+- **Desenvolvimento nativo especializado (Kotlin/Swift):** empresas que exigem alto desempenho e integração mais profunda com o sistema operacional.
+
+- **Aplicativos para nichos específicos:** apps voltados para saúde, educação, finanças, logística e agro continuam crescendo e também cresce a necessidade de integrar esses aplicativos com IA.
+
+- **Freelancer e produtos próprios:** com ferramentas modernas, devs independentes conseguem criar e monetizar seus próprios apps através de diversas formas (anúncios, assinaturas, etc.).
+
+### Como se destacar em um mercado competitivo?
+
+**Em 2025, ser apenas mais um dev mobile não basta. É preciso se destacar. E algumas dicas que tenho são:**
+
+**1. Construa um portfólio real.**
+
+Nada chama mais atenção do que projetos práticos. Construa apps próprios, colabore com projetos open source ou simule soluções para empresas fictícias.
+
+**2. Aprenda uma stack moderna.**
+
+- Flutter + Dart
+
+- React Native
+
+- Kotlin Multiplatform
+
+- SwiftUI (iOS Nativo)
+
+> Tenha ao menos uma stack bem dominada e acompanhe as novidades da comunidade em canais como Slack, Blogs, etc.
+
+**3. Entenda de UX/UI.**
+
+Saber desenvolver é ótimo. Mas saber criar uma experiência de uso agradável é um diferencial que te destaca.
+
+**4. Seja multiplataforma e adaptável.**
+
+Empresas procuram profissionais que entendam tanto do mobile quanto do backend, cloud, APIs e até automações de testes.
+
+**5. Construa presença online.**
+
+Poste projetos no GitHub, escreva sobre aprendizados no Medium ou LinkedIn, participe de comunidades. Isso ajuda no networking e visibilidade.
+
+### Soft Skills essenciais para desenvolvedores mobile
+
+Muitos focam apenas no código, mas saber se comunicar bem, trabalhar em equipe, resolver problemas e entender o negócio é o que realmente diferencia um bom desenvolvedor.
+
+**Ao meu ver, destaco algumas das soft skills mais importantes:**
+
+- **Pensamento crítico:** Capacidade de analisar problemas com lógica, questionar soluções prontas e propor alternativas mais eficientes e inteligentes.
+
+- **Empatia com o usuário:** entender as necessidades e limitações do usuário final para criar experiências intuitivas, acessíveis e agradáveis.
+
+- **Organização e gestão de tempo:** saber planejar tarefas, definir prioridades e manter prazos, evitando acúmulo e retrabalho.
+
+- **Colaboração em projetos ágeis:** Trabalhar bem em equipe, comunicar-se com clareza e participar ativamente de ciclos ágeis como deadlines, plannings e reviews.
+
+### Dicas práticas para acelerar sua carreira como dev mobile e como continuar se desenvolvendo
+
+- Estude todos os dias: nem que seja 30 minutos. A tecnologia evolui muito rápido.
+
+- Consuma conteúdos atuais: blogs, canais do YouTube, newsletters, podcasts.
+
+- Participe de eventos e meetups (presenciais ou online).
+
+- Faça cursos práticos e projetos paralelos.
+
+- Procure mentores ou grupos de apoio, uma rede de desenvolvedores pode acelerar muito sua evolução.
+
+### Conclusão
+
+O mercado de desenvolvimento mobile em 2025 está cheio de possibilidades. Para quem está começando, o desafio é encontrar um caminho entre tantas tecnologias e ferramentas. Para quem já está na estrada, o foco deve ser a especialização e a diferenciação.
+
+Com dedicação, estudo constante e projetos práticos, é totalmente possível construir uma carreira sólida, promissora e bem remunerada na área mobile.
+
+O segredo? **Nunca parar de aprender e sempre buscar entregar valor com o que você cria.**`,
+      previewContent:
+        'O desenvolvimento mobile não para de crescer e, com ele, as oportunidades e desafios também. Neste artigo, compartilho minha experiência na área e trago insights valiosos para quem quer se destacar nesse mercado em constante evolução.',
+      slug: 'desenvolvimento-mobile-2025',
+      isPublished: true,
+      categoryId: 7,
+    },
+  });
+
+  console.log({
+    mikkaiser,
+    leticia,
+    monique,
+    leornado,
+    pedroMiguel,
+    lucasAlves,
+  });
   console.log({
     CATEGORY_REFLEXION,
     CATEGORY_OLYMPIAD,
@@ -632,6 +785,8 @@ Se você também está nesse caminho, saiba que cada passo importa. E o próximo
     CATEGORY_JAVASCRIPT,
     CATEGORY_CHALLENGE,
     CATEGORY_CLOUDCOMPUTING,
+    CATEGORY_MOBILE,
+    CATEGORY_CAREER,
   });
   console.log({
     FAZ_FUNCIONAR_E_DEPOIS_MELHORA_SERA_MESMO,
@@ -644,6 +799,7 @@ Se você também está nesse caminho, saiba que cada passo importa. E o próximo
     YOU_LEARN_FROM_YOUR_MISTAKES,
     PRATICE_HOW_TO_BECOME_A_DEVELOPER,
     HOW_I_LEARNED_TO_CREATE_MY_OWN_INTERFACES,
+    THE_MOBILE_DEVELOPMENT_MARKET_2025,
   });
 }
 
