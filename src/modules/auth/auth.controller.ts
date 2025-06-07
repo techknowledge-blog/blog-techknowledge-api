@@ -1,38 +1,16 @@
-import { Controller, Get, Param } from '@nestjs/common';
-import { PostsService } from './auth.service';
-import { Post as PostModel } from '@prisma/client';
+import { Controller, Post, Body, UnauthorizedException } from '@nestjs/common';
+import { AuthService } from './auth.service';
 
-@Controller('posts')
-export class PostsController {
-  constructor(private readonly postService: PostsService) {}
+@Controller('auth')
+export class AuthController {
+  constructor(private authService: AuthService) {}
 
-  @Get('published')
-  async findPublishedPosts(): Promise<PostModel[]> {
-    return this.postService.posts({
-      where: { isPublished: true },
-    });
-  }
-
-  @Get('filtered-posts/:searchString')
-  async findFilteredPosts(
-    @Param('searchString') searchString: string,
-  ): Promise<PostModel[]> {
-    return this.postService.posts({
-      where: {
-        OR: [
-          {
-            title: { contains: searchString },
-          },
-          {
-            content: { contains: searchString },
-          },
-        ],
-      },
-    });
-  }
-
-  @Get(':slug')
-  async findPostBySlug(@Param('slug') slug: string): Promise<PostModel> {
-    return this.postService.findPostBySlug(slug);
+  @Post('login')
+  async login(@Body() body: { username: string; password: string }) {
+    const user = await this.authService.validateUser(body.username, body.password);
+    if (!user) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+    return this.authService.login(user);
   }
 }

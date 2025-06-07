@@ -1,3 +1,8 @@
 {
-  "githubPullRequests.ignoredPullRequestBranches": ["main"]
+  "githubPullRequests.ignoredPullRequestBranches": [
+    "main"
+  ],
+  "conventionalCommits.scopes": [
+    "auth"
+  ]
 }
