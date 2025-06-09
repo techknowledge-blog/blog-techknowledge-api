@@ -10,7 +10,8 @@ export async function seedUsers() {
       name: 'Mikael Ribeiro',
       email: 'mikaelrsimoes19@gmail.com',
       function: 'Desenvolvedor Full Stack',
-      passwordHash: '$2a$10$e0b1f5c8d3b4c6f7e8d9eO5z1QZ5h5k5l5m5n5o5p5q5r5s5t5u5v', // Example hash
+      passwordHash:
+        '$2a$10$e0b1f5c8d3b4c6f7e8d9eO5z1QZ5h5k5l5m5n5o5p5q5r5s5t5u5v', // Example hash
       role: 'ADMIN',
     },
   });
@@ -22,7 +23,8 @@ export async function seedUsers() {
       name: 'Leticia Dias',
       email: 'contatoleticiadia@gmail.com',
       function: 'Desenvolvedora Full Stack',
-      passwordHash: '$2a$10$e0b1f5c8d3b4c6f7e8d9eO5z1QZ5h5k5l5m5n5o5p5q5r5s5t5u5v', // Example hash
+      passwordHash:
+        '$2a$10$e0b1f5c8d3b4c6f7e8d9eO5z1QZ5h5k5l5m5n5o5p5q5r5s5t5u5v', // Example hash
       role: 'ADMIN',
     },
   });
@@ -41,7 +43,7 @@ export async function seedUsers() {
     where: { email: 'leohas.dev@gmail.com' },
     update: {},
     create: {
-      name: 'Leornado Henrique',
+      name: 'Leonardo Henrique',
       email: 'leohas.dev@gmail.com',
       function: 'Full Stack Developer',
     },
