@@ -11,7 +11,7 @@ export async function seedUsers() {
       email: 'mikaelrsimoes19@gmail.com',
       function: 'Desenvolvedor Full Stack',
       passwordHash:
-        '$2a$10$e0b1f5c8d3b4c6f7e8d9eO5z1QZ5h5k5l5m5n5o5p5q5r5s5t5u5v', // Example hash
+        '$2a$10$e0b1f5c8d3b4c6f7e8d9eO5z1QZ5h5k5l5m5n5o5p5q5r5s5t5u5v',
       role: 'ADMIN',
     },
   });
@@ -24,7 +24,7 @@ export async function seedUsers() {
       email: 'contatoleticiadia@gmail.com',
       function: 'Desenvolvedora Full Stack',
       passwordHash:
-        '$2a$10$e0b1f5c8d3b4c6f7e8d9eO5z1QZ5h5k5l5m5n5o5p5q5r5s5t5u5v', // Example hash
+        '$2a$10$e0b1f5c8d3b4c6f7e8d9eO5z1QZ5h5k5l5m5n5o5p5q5r5s5t5u5v',
       role: 'ADMIN',
     },
   });
@@ -79,6 +79,26 @@ export async function seedUsers() {
     },
   });
 
+  const alvesJhonata = await prisma.user.upsert({
+    where: { email: '4llves.dev@gmail.com' },
+    update: {},
+    create: {
+      name: 'Alves Jhonata',
+      email: '4llves.dev@gmail.com',
+      function: 'Desenvolvedor Frontend e RPA',
+    },
+  });
+
+  const joaoJacinto = await prisma.user.upsert({
+    where: { email: 'joaonetotfm@gmail.com' },
+    update: {},
+    create: {
+      name: 'João Jacinto',
+      email: 'joaonetotfm@gmail.com',
+      function: 'Engenheiro de Software',
+    },
+  });
+
   console.log({
     mikkaiser,
     leticia,
@@ -87,5 +107,7 @@ export async function seedUsers() {
     pedroMiguel,
     lucasAlves,
     teste,
+    alvesJhonata,
+    joaoJacinto,
   });
 }

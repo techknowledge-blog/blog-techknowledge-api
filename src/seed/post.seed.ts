@@ -598,6 +598,123 @@ Para mim, tem sido uma experiência fantástica tanto profissional quanto pessoa
     },
   );
 
+  const FIRST_STEPS_AS_A_FREELANCER = await prisma.post.upsert({
+    where: { id: 13 },
+    update: {},
+    create: {
+      title: 'Primeiros Passos como Freelancer: Desafios, Dicas e Descobertas.',
+      authorId: 8,
+      content: `Começar a jornada como freelancer é como embarcar em uma aventura cheia de incertezas, mas também repleta de possibilidades. No início, tudo parece novo e desafiador: encontrar os primeiros clientes, definir preços justos, organizar a rotina e aprender a se vender no mercado. A liberdade de trabalhar por conta própria vem acompanhada de muitas responsabilidades e é justamente nesse equilíbrio que mora o aprendizado.
+
+Neste artigo, compartilho minha visão e aprendizados nesse início de caminhada.
+
+### Como conseguir os primeiros clientes?
+
+No início, rolam muitas dúvidas, principalmente sobre como conseguir os primeiros projetos. No meu caso, comecei oferecendo ajuda para pessoas próximas. Uma amiga que estava se formando em psicologia topou fazer um site simples comigo para divulgar o seu trabalho. Fiz de forma gratuita, como forma de praticar e também para montar meu portfólio.
+
+Uma boa dica é conversar com amigos que têm outras profissões e sugerir uma landing page simples. Mesmo sem ser algo muito complexo, já é possível mostrar seu trabalho. Se ainda não tiver clientes, crie projetos com foco em um nicho específico. Isso ajuda a mostrar seu estilo e passa mais credibilidade.
+
+### O papel do networking nos freelas que consegui
+
+Networking é fundamental para conseguir freelas e, na verdade, para muitas outras áreas da vida profissional. Desde os 13 anos, grande parte das minhas oportunidades de trabalho surgiu por meio de conexões. Com os freelas, não foi diferente.
+
+Em dezembro, enquanto conversava em um grupo de WhatsApp de desenvolvedores, comentei sobre uma landing page que fiz para minha amiga psicóloga e mencionei que estava começando a pegar freelas. Pouco tempo depois, um dos participantes me chamou no privado oferecendo um freela de frontend e aceitei na hora.
+
+Desde então, sempre que aparece algo na área, ele me chama. Isso mostra como o networking pode abrir portas e fazer toda a diferença na carreira.
+
+### Conselhos para quem quer começar como freelancer
+
+Se você está começando na programação, busque os primeiros freelas com pessoas próximas, como amigos ou familiares, é um ambiente mais seguro para ganhar confiança.
+
+Para quem já tem experiência trabalhando como desenvolvedor, a dica é começar com projetos simples, como uma landing page, e ir evoluindo aos poucos. Se possível, trabalhe junto com alguém mais experiente. Isso ajuda a ter mais segurança, aprender na prática e ainda construir networking desde o início.
+
+Mais do que só desenvolver, é importante saber comunicar o valor do que você faz. O cliente precisa entender os benefícios, como uma landing page pode atrair mais pacientes, por exemplo.
+
+Outro ponto importante é entender a real necessidade do cliente e o que de fato ele precisa.
+
+### Dicas para montar um contrato de freela
+
+Elaborar um contrato não é fácil, principalmente se você está começando como freelancer. No entanto, ele é essencial para garantir segurança no trabalho.
+
+Para fazer os meus primeiros contratos, contei com a ajuda de uma amiga advogada para revisar eles e posso dizer a vocês que isso fez toda a diferença.
+
+Se você não sabe por onde começar, busque o apoio de alguém da área jurídica para revisar o documento e, se possível, registre em cartório.
+
+Além disso, é importante entender o perfil do cliente com quem você vai trabalhar. Já na primeira conversa, dá para perceber o tipo de relação que pode surgir. Sempre registre o que for combinado, seja por e-mail ou outro meio escrito. Isso evita mal-entendidos e protege ambos os lados.
+
+### Como lido com o processo do cliente: briefing, entrega e mais
+
+No universo do freelancer, sei que algumas pessoas seguem um processo para montar o projeto com o cliente, que vai desde o briefing, contrato e definir um prazo para entrega. No entanto, eu ainda não sigo um processo fixo.
+
+Geralmente, tudo começa com uma conversa informal com o cliente. Vou ouvindo, entendendo a necessidade dele e tentando captar o que realmente espera do projeto.
+
+A partir disso, ajusto a proposta e, se estiver tudo certo, seguimos com o trabalho. Aos poucos, tenho percebido a importância de criar um processo mais estruturado, com briefing, contrato e etapas de entrega bem definidas. Isso ajuda a organizar melhor e passar mais profissionalismo.
+
+### Como me organizo no dia a dia como freelancer
+
+Não costumo usar ferramentas específicas para me organizar, mas sempre faço anotações e fico atento aos prazos de entrega. Realizar a entrega no prazo e com qualidade é essencial para construir uma boa reputação como freelancer.
+
+### O que eu gostaria de ter aprendido antes de começar como freelancer?
+
+Gostaria de ter aprendido backend antes de começar a trabalhar como freelancer. Já perdi algumas oportunidades por não dominar essa parte, principalmente em projetos que exigiam uma entrega mais completa. Hoje estou estudando para me tornar full stack e ampliar as chances de pegar freelas mais completos e desafiadores.
+
+### Como o trabalho como freelancer ajudou no meu crescimento como desenvolvedor?
+
+Ser freelancer me ajudou muito a crescer como desenvolvedor. Você é constantemente desafiado a lidar com situações fora da sua zona de conforto e a aprender coisas que ainda não domina. Diferente dos estudos, o freela te coloca frente a problemas reais, com prazos e exigências de clientes, algo que você só entende de verdade quando começa a trabalhar.
+
+Por exemplo, em um dos meus primeiros projetos, precisei criar um formulário com upload de múltiplos arquivos. Parecia simples no início, mas na prática, surgiram várias dificuldades que eu nunca tinha enfrentado nos estudos.
+
+**Explicando um pouco melhor sobre esse meu aprendizado:**
+
+Em um dos projetos, precisei criar um formulário com um **select** para escolher o tipo de arquivo e um **input file** para fazer o upload. Havia também um botão para adicionar novos campos com a mesma estrutura.
+
+O problema surgiu quando adicionávamos um segundo campo: ao alterar o valor do primeiro **select**, o segundo também mudava automaticamente. Eles estavam compartilhando o mesmo estado.
+
+Depois de muito tentar resolver, a saída foi criar um componente Select totalmente personalizado, com controle de estado isolado para cada instância. Só assim conseguimos fazer funcionar corretamente.
+
+> 💡 **Nota:** Esses desafios do dia a dia me fizeram evoluir muito mais rápido.
+
+### Conclusão
+
+Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e descobertas. Cada projeto me fez evoluir, tanto tecnicamente quanto na forma de lidar com clientes e me posicionar no mercado. Ainda estou construindo meu caminho, aprendendo com cada experiência, mas uma coisa é certa: com dedicação, curiosidade e boas conexões, é possível crescer muito na área. E o mais importante: começar simples, mas começar.`,
+      previewContent:
+        'Começar como freelancer em desenvolvimento pode parecer desafiador, mas com as experiências certas, tudo se encaixa. Neste artigo, compartilho como consegui meus primeiros clientes, os aprendizados e desafios.',
+      slug: 'primeiros-passos-como-freelance',
+      isPublished: true,
+      categoryId: 8,
+    },
+  });
+
+  const COMPONENTS = await prisma.post.upsert({
+    where: { id: 14 },
+    update: {},
+    create: {
+      title: 'Componentes',
+      authorId: 4,
+      content: ``,
+      previewContent:
+        'Componentes são a base de qualquer interface bem estruturada e entender isso pode mudar a forma como você desenvolve. Neste artigo, vamos explorar o que são componentes, como pensar neles no seu dia a dia e por que eles são tão importantes no front-end.',
+      slug: 'componentes',
+      isPublished: true,
+      categoryId: 9,
+    },
+  });
+
+  const TAILWINDCSS_IS_MOBILE_FIRST = await prisma.post.upsert({
+    where: { id: 15 },
+    update: {},
+    create: {
+      title: 'Tailwind é Mobile First? Vem descobrir comigo.',
+      authorId: 2,
+      content: ``,
+      previewContent:
+        'Quando comecei a usar o TailwindCSS, não fazia ideia de que ele já aplicava os estilos primeiro em dispositivos mobiles. Neste artigo, compartilho como descobri que o Tailwind é mobile first e o que isso significa na prática.',
+      slug: 'tailwind-mobile-first',
+      isPublished: true,
+      categoryId: 10,
+    },
+  });
+
   console.log({
     FAZ_FUNCIONAR_E_DEPOIS_MELHORA_SERA_MESMO,
     OLIMPIADA_DO_CONHECIMENTO,
@@ -609,5 +726,8 @@ Para mim, tem sido uma experiência fantástica tanto profissional quanto pessoa
     HOW_I_LEARNED_TO_CREATE_MY_OWN_INTERFACES,
     THE_MOBILE_DEVELOPMENT_MARKET_2025,
     LINVING_OUTSIDE_BRAZIL_IS_IT_REALLY_WORTH_IT,
+    FIRST_STEPS_AS_A_FREELANCER,
+    COMPONENTS,
+    TAILWINDCSS_IS_MOBILE_FIRST,
   });
 }

@@ -42,13 +42,25 @@ export async function seedCategories() {
   const CATEGORY_MOBILE = await prisma.category.upsert({
     where: { id: 7 },
     update: {},
-    create: { name: 'Mobile' },
+    create: { name: 'mobile' },
   });
 
   const CATEGORY_CAREER = await prisma.category.upsert({
     where: { id: 8 },
     update: {},
-    create: { name: 'Carreira' },
+    create: { name: 'carreira' },
+  });
+
+  const CATEGORY_FRONTEND = await prisma.category.upsert({
+    where: { id: 9 },
+    update: {},
+    create: { name: 'frontend' },
+  });
+
+  const CATEGORY_TAILWINDCSS = await prisma.category.upsert({
+    where: { id: 10 },
+    update: {},
+    create: { name: 'tailwindcss' },
   });
 
   console.log({
@@ -60,5 +72,7 @@ export async function seedCategories() {
     CATEGORY_CLOUDCOMPUTING,
     CATEGORY_MOBILE,
     CATEGORY_CAREER,
+    CATEGORY_FRONTEND,
+    CATEGORY_TAILWINDCSS,
   });
 }
