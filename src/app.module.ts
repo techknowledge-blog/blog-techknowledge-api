@@ -5,21 +5,14 @@ import { PostsService } from './modules/posts/posts.service';
 import { PrismaService } from './prisma.service';
 import { PostsModule } from './modules/posts/posts.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
+import { UsersController } from './modules/users/users.controller';
+import { UsersService } from './modules/users/users.service';
 
 @Module({
-  imports: [
-    // GraphQLModule.forRoot<ApolloDriverConfig>({
-    //   driver: ApolloDriver,
-    //   autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-    //   definitions: {
-    //     path: join(process.cwd(), 'src/graphql.ts'),
-    //   },
-    // }),
-    PostsModule,
-    AuthModule
-  ],
-  controllers: [AppController],
-  providers: [AppService, PrismaService, PostsService],
+  imports: [PostsModule, AuthModule, UsersModule],
+  controllers: [AppController, UsersController],
+  providers: [AppService, PrismaService, PostsService, UsersService],
   exports: [PrismaService],
 })
 export class AppModule {}
