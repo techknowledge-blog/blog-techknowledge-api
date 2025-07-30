@@ -12,11 +12,24 @@ export class UsersService {
   }
 
   async findAll() {
-    return this.prisma.user.findMany({ where: { deletedAt: null } });
+    return this.prisma.user.findMany({
+      where: { deletedAt: null },
+      select: {
+        name: true,
+        function: true,
+      },
+    });
   }
 
   async findOne(id: number) {
-    const user = await this.prisma.user.findUnique({ where: { id } });
+    const user = await this.prisma.user.findUnique({
+      where: { id },
+      select: {
+        name: true,
+        function: true,
+        posts: { where: { isPublished: true }, select: { title: true } },
+      },
+    });
 
     if (!user) {
       throw new NotFoundException('User not found');
@@ -26,12 +39,21 @@ export class UsersService {
   }
 
   async update(id: number, data: UpdateUserDto) {
-    await this.findOne(id);
+    const findUser = await this.findOne(id);
+
+    if (!findUser) {
+      throw new NotFoundException('User not found');
+    }
+
     return this.prisma.user.update({ where: { id }, data });
   }
 
   async remove(id: number) {
-    await this.findOne(id);
+    const findUser = await this.findOne(id);
+
+    if (!findUser) {
+      throw new NotFoundException('User not found');
+    }
 
     await this.prisma.user.delete({ where: { id } });
 
