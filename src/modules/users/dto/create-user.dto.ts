@@ -16,6 +16,10 @@ export class CreateUserDto {
   name: string;
 
   @IsOptional()
+  @IsString()
+  description?: string;
+
+  @IsOptional()
   @IsUrl()
   avatarLink?: string;
 
@@ -30,8 +34,4 @@ export class CreateUserDto {
   @IsOptional()
   @IsString()
   role?: string;
-
-  @IsOptional()
-  @IsString()
-  description?: string;
 }

@@ -7,27 +7,28 @@
 // }
 
 generator client {
-  provider        = "prisma-client-js"
-  engineType      = "binary"
+  provider   = "prisma-client-js"
+  engineType = "binary"
 }
 
 datasource db {
   provider = "postgres"
-  url      = env("URL_DATABASE")
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  id            Int       @id @default(autoincrement())
-  email         String    @unique
-  name          String
-  passwordHash  String?    
-  role          String?
-  function      String
-  posts         Post[]
-  avatarLink    String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @default(now())
-  deletedAt     DateTime?
+  id           Int       @id @default(autoincrement())
+  email        String    @unique
+  name         String
+  description  String?
+  passwordHash String?
+  role         String?
+  function     String
+  posts        Post[]
+  avatarLink   String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @default(now())
+  deletedAt    DateTime?
 }
 
 model Post {
