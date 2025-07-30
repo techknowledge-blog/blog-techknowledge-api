@@ -18,6 +18,9 @@ export class UsersService {
         name: true,
         function: true,
       },
+      orderBy: {
+        id: 'asc',
+      },
     });
   }
 
@@ -27,6 +30,7 @@ export class UsersService {
       select: {
         name: true,
         function: true,
+        description: true,
         posts: { where: { isPublished: true }, select: { title: true } },
       },
     });
