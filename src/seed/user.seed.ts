@@ -99,6 +99,16 @@ export async function seedUsers() {
     },
   });
 
+  const danielDuarte = await prisma.user.upsert({
+    where: { email: 'daniel9duarte@gmail.com' },
+    update: {},
+    create: {
+      name: 'Daniel Duarte',
+      email: 'daniel9duarte@gmail.com',
+      function: 'Senior Product Designer',
+    },
+  });
+
   console.log({
     mikkaiser,
     leticia,
@@ -109,5 +119,6 @@ export async function seedUsers() {
     teste,
     alvesJhonata,
     joaoJacinto,
+    danielDuarte,
   });
 }
