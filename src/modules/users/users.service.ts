@@ -15,8 +15,10 @@ export class UsersService {
     return this.prisma.user.findMany({
       where: { deletedAt: null },
       select: {
+        id: true,
         name: true,
         function: true,
+        role: true,
       },
       orderBy: {
         id: 'asc',
