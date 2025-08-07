@@ -715,6 +715,21 @@ Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e
     },
   });
 
+  const TAILWINDCSS_A_POWERFUL_TOOL = await prisma.post.upsert({
+    where: { id: 16 },
+    update: {},
+    create: {
+      title: 'TailwindCSS: Uma ferramenta poderosa para estilização.',
+      authorId: 2,
+      content: ``,
+      previewContent:
+        'Neste artigo, você vai entender como essa ferramenta funciona, explorar sua estrutura e descobrir por que tantos desenvolvedores estão adotando o Tailwind no dia a dia.',
+      slug: 'tailwind-uma-ferramenta-poderosa',
+      isPublished: true,
+      categoryId: 10,
+    },
+  });
+
   console.log({
     FAZ_FUNCIONAR_E_DEPOIS_MELHORA_SERA_MESMO,
     OLIMPIADA_DO_CONHECIMENTO,
@@ -729,5 +744,6 @@ Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e
     FIRST_STEPS_AS_A_FREELANCER,
     COMPONENTS,
     TAILWINDCSS_IS_MOBILE_FIRST,
+    TAILWINDCSS_A_POWERFUL_TOOL,
   });
 }
