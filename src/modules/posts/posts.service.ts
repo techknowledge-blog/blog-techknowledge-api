@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../prisma.service';
 import { Post, Prisma } from '@prisma/client';
 
@@ -7,7 +7,7 @@ export class PostsService {
   constructor(private prisma: PrismaService) {}
 
   async findPostBySlug(slug: string): Promise<Post | null> {
-    return this.prisma.post.findUnique({
+    const post = await this.prisma.post.findUnique({
       where: { slug },
       include: {
         category: {
@@ -22,6 +22,12 @@ export class PostsService {
         },
       },
     });
+
+    if (!post) {
+      throw new NotFoundException('Post not found!');
+    }
+
+    return post;
   }
 
   async posts(params: {
