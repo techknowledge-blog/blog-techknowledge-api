@@ -13,7 +13,7 @@ export class UsersService {
 
   async findAll() {
     return this.prisma.user.findMany({
-      where: { deletedAt: null },
+      where: { deletedAt: null, role: 'creator' },
       select: {
         id: true,
         name: true,
@@ -39,6 +39,18 @@ export class UsersService {
 
     if (!user) {
       throw new NotFoundException('User not found');
+    }
+
+    return user;
+  }
+
+  async findUserByName(name: string) {
+    const user = this.prisma.user.findFirst({ where: { name } });
+
+    if (!user) {
+      throw new NotFoundException(
+        `Usuário com o nome "${name}" não encontrado.`,
+      );
     }
 
     return user;
