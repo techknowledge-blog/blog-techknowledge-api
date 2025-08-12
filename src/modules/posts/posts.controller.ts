@@ -32,7 +32,7 @@ export class PostsController {
   }
 
   @Get(':slug')
-  async getPostBySlug(@Param('slug') slug: string): Promise<PostModel> {
+  async findPostBySlug(@Param('slug') slug: string): Promise<PostModel> {
     return this.postService.findPostBySlug(slug);
   }
 }
