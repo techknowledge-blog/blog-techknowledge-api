@@ -17,6 +17,7 @@ export class UsersService {
       select: {
         id: true,
         name: true,
+        username: true,
         function: true,
         role: true,
       },
@@ -26,19 +27,24 @@ export class UsersService {
     });
   }
 
-  async findOne(id: number) {
+  async findOne(username: string) {
     const user = await this.prisma.user.findUnique({
-      where: { id },
+      where: { username },
       select: {
         name: true,
         function: true,
         description: true,
-        posts: { where: { isPublished: true }, select: { title: true } },
+        posts: {
+          where: { isPublished: true },
+          select: { title: true, slug: true },
+        },
       },
     });
 
     if (!user) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException(
+        `Usuário com o nome de ${username} não encontrado.`,
+      );
     }
 
     return user;
@@ -48,33 +54,35 @@ export class UsersService {
     const user = this.prisma.user.findFirst({ where: { name } });
 
     if (!user) {
-      throw new NotFoundException(
-        `Usuário com o nome "${name}" não encontrado.`,
-      );
+      throw new NotFoundException(`Usuário com o nome ${name} não encontrado.`);
     }
 
     return user;
   }
 
-  async update(id: number, data: UpdateUserDto) {
-    const findUser = await this.findOne(id);
+  async update(username: string, data: UpdateUserDto) {
+    const findUser = await this.findOne(username);
 
     if (!findUser) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException(
+        `Usuário com o nome de "${username}" não encontrado.`,
+      );
     }
 
-    return this.prisma.user.update({ where: { id }, data });
+    return this.prisma.user.update({ where: { username }, data });
   }
 
-  async remove(id: number) {
-    const findUser = await this.findOne(id);
+  async remove(username: string) {
+    const findUser = await this.findOne(username);
 
     if (!findUser) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException(
+        `Usuário com o nome de "${username}" não encontrado.`,
+      );
     }
 
-    await this.prisma.user.delete({ where: { id } });
+    await this.prisma.user.delete({ where: { username } });
 
-    return { message: 'User successfully removed', id };
+    return { message: 'Usuário removido com sucesso!', username };
   }
 }
