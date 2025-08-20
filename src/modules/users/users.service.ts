@@ -20,6 +20,7 @@ export class UsersService {
         username: true,
         function: true,
         role: true,
+        description: true,
       },
       orderBy: {
         id: 'asc',
