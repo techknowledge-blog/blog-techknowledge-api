@@ -43,6 +43,7 @@ model Post {
   coverImageLink   String?
   slug             String    @unique
   previewImageLink String?
+  estimated_time   Int       @default(0)
   authorId         Int
   categoryId       Int
   createdAt        DateTime  @default(now())
