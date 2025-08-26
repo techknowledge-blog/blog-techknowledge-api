@@ -1,10 +1,42 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../prisma.service';
-import { Post, Prisma } from '@prisma/client';
+import { Post } from '@prisma/client';
+import { CreatePostDto } from './dto/create-post.dto';
+import { UpdatePostDto } from './dto/update-post.dto';
 
 @Injectable()
 export class PostsService {
   constructor(private prisma: PrismaService) {}
+
+  private calculateEstimatedTime(content: string): number {
+    if (!content) {
+      new NotFoundException('Conteúdo não encontrado!');
+      return 0;
+    }
+
+    const countWords = content.trim().split(/\s+/).length;
+
+    return Math.ceil(countWords / 200);
+  }
+
+  async createPost(data: CreatePostDto): Promise<Post> {
+    const estimated_time = this.calculateEstimatedTime(data.content as string);
+
+    return this.prisma.post.create({
+      data: {
+        title: data.title,
+        previewContent: data.previewContent,
+        content: data.content,
+        slug: data.slug,
+        isPublished: data.isPublished,
+        coverImageLink: data.coverImageLink,
+        previewImageLink: data.previewImageLink,
+        estimated_time,
+        author: { connect: { id: data.authorId } },
+        category: { connect: { id: data.categoryId } },
+      },
+    });
+  }
 
   async findPostBySlug(slug: string): Promise<Post | null> {
     const post = await this.prisma.post.findUnique({
@@ -24,26 +56,17 @@ export class PostsService {
     });
 
     if (!post) {
-      throw new NotFoundException('Post not found!');
+      throw new NotFoundException('Artigo não encontrado!');
     }
 
     return post;
   }
 
-  async posts(params: {
-    skip?: number;
-    take?: number;
-    cursor?: Prisma.PostWhereUniqueInput;
-    where?: Prisma.PostWhereInput;
-    orderBy?: Prisma.PostOrderByWithRelationInput;
-  }): Promise<Post[]> {
-    const { skip, take, cursor, where, orderBy } = params;
-    return this.prisma.post.findMany({
-      skip,
-      take,
-      cursor,
-      where,
-      orderBy,
+  async findPublishedPosts(): Promise<Post[]> {
+    const posts = await this.prisma.post.findMany({
+      where: {
+        isPublished: true,
+      },
       include: {
         category: {
           select: {
@@ -57,28 +80,37 @@ export class PostsService {
         },
       },
     });
+
+    if (!posts) {
+      throw new NotFoundException('Artigos não encontrados!');
+    }
+
+    return posts;
   }
 
-  async createPost(data: Prisma.PostCreateInput): Promise<Post> {
-    return this.prisma.post.create({
-      data,
-    });
+  async updatePost(slug: string, data: UpdatePostDto) {
+    const findPost = await this.findPostBySlug(slug);
+
+    if (!findPost) {
+      throw new NotFoundException(
+        `Não foi encontrado o artigo com o slug "${slug}"`,
+      );
+    }
+
+    return this.prisma.post.update({ where: { slug }, data });
   }
 
-  async updatePost(params: {
-    where: Prisma.PostWhereUniqueInput;
-    data: Prisma.PostUpdateInput;
-  }): Promise<Post> {
-    const { data, where } = params;
-    return this.prisma.post.update({
-      data,
-      where,
-    });
-  }
+  async removePost(slug: string) {
+    const findPost = await this.findPostBySlug(slug);
 
-  async deletePost(where: Prisma.PostWhereUniqueInput): Promise<Post> {
-    return this.prisma.post.delete({
-      where,
-    });
+    if (!findPost) {
+      throw new NotFoundException(
+        `Não foi encontrado o artigo com o slug "${slug}"`,
+      );
+    }
+
+    await this.prisma.post.delete({ where: { slug } });
+
+    return { message: 'Artigo removido com sucesso!' };
   }
 }

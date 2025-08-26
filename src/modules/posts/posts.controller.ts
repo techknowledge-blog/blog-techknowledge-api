@@ -1,38 +1,43 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { Post as PostModel } from '@prisma/client';
+import { CreatePostDto } from './dto/create-post.dto';
+import { UpdatePostDto } from './dto/update-post.dto';
 
 @Controller('posts')
 export class PostsController {
   constructor(private readonly postService: PostsService) {}
 
-  @Get('published')
-  async findPublishedPosts(): Promise<PostModel[]> {
-    return this.postService.posts({
-      where: { isPublished: true },
-    });
+  @Post()
+  async create(@Body() dto: CreatePostDto) {
+    return this.postService.createPost(dto);
   }
 
-  @Get('filtered-posts/:searchString')
-  async findFilteredPosts(
-    @Param('searchString') searchString: string,
-  ): Promise<PostModel[]> {
-    return this.postService.posts({
-      where: {
-        OR: [
-          {
-            title: { contains: searchString },
-          },
-          {
-            content: { contains: searchString },
-          },
-        ],
-      },
-    });
+  @Get('published')
+  async findPublishedPosts(): Promise<PostModel[]> {
+    return this.postService.findPublishedPosts();
   }
 
   @Get(':slug')
   async findPostBySlug(@Param('slug') slug: string): Promise<PostModel> {
     return this.postService.findPostBySlug(slug);
+  }
+
+  @Patch(':slug')
+  update(@Param('slug') slug: string, @Body() dto: UpdatePostDto) {
+    return this.postService.updatePost(slug, dto);
+  }
+
+  @Delete(':slug')
+  remove(@Param('slug') slug: string) {
+    return this.postService.removePost(slug);
   }
 }
