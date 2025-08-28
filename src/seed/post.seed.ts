@@ -730,6 +730,21 @@ Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e
     },
   });
 
+  const GENERIC_COMPONENTS = await prisma.post.upsert({
+    where: { id: 18 },
+    update: {},
+    create: {
+      title: 'Componentes Genéricos: A Arte de Não Reinventar a Roda (Parte 1)',
+      authorId: 4,
+      content: ``,
+      previewContent:
+        'Descubra como os componentes genéricos podem transformar sua forma de programar, evitando código duplicado e trazendo mais clareza e reutilização ao seu projeto.',
+      slug: 'componentes-genericos-arte-de-nao-reinventar-roda-parte-1',
+      isPublished: true,
+      categoryId: 9,
+    },
+  });
+
   console.log({
     FAZ_FUNCIONAR_E_DEPOIS_MELHORA_SERA_MESMO,
     OLIMPIADA_DO_CONHECIMENTO,
@@ -745,5 +760,6 @@ Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e
     COMPONENTS,
     TAILWINDCSS_IS_MOBILE_FIRST,
     TAILWINDCSS_A_POWERFUL_TOOL,
+    GENERIC_COMPONENTS,
   });
 }
