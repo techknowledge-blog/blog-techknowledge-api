@@ -79,6 +79,11 @@ export class PostsService {
           },
         },
       },
+      orderBy: {
+        category: {
+          name: 'asc',
+        },
+      },
     });
 
     if (!posts) {
