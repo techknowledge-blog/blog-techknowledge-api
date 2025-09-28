@@ -44,6 +44,7 @@ model Post {
   slug             String    @unique
   previewImageLink String?
   estimated_time   Int       @default(0)
+  article_level    String
   authorId         Int
   categoryId       Int
   createdAt        DateTime  @default(now())

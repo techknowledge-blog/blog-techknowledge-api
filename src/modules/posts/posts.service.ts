@@ -32,6 +32,7 @@ export class PostsService {
         coverImageLink: data.coverImageLink,
         previewImageLink: data.previewImageLink,
         estimated_time,
+        article_level: data.article_level,
         author: { connect: { id: data.authorId } },
         category: { connect: { id: data.categoryId } },
       },
