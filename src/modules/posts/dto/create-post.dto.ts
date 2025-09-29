@@ -25,6 +25,9 @@ export class CreatePostDto {
   @IsString()
   slug: string;
 
+  @IsString()
+  article_level: string;
+
   @IsInt()
   authorId: number;
 

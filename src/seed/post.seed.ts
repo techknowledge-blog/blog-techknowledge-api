@@ -52,6 +52,8 @@ Por isso, eu hoje não levo esse pensamento comigo. Posso até demorar um pouco 
       slug: 'faz-funcionar-e-depois-melhora-sera-mesmo',
       isPublished: true,
       categoryId: 1,
+      article_level: '',
+      estimated_time: 3,
     },
   });
 
@@ -91,6 +93,8 @@ No próximo post vou contar como eu (Leticia) e o Mikael nos tornamos competidor
       slug: 'olimpiada-do-conhecimento',
       isPublished: true,
       categoryId: 2,
+      article_level: '',
+      estimated_time: 3,
     },
   });
 
@@ -134,6 +138,8 @@ Esse é apenas um dos muitos posts que vamos documentar nossa experiência duran
       slug: 'techknowledge-ponto-zero',
       isPublished: true,
       categoryId: 3,
+      article_level: '',
+      estimated_time: 4,
     },
   });
 
@@ -163,6 +169,8 @@ Para mais informações, aqui está meu Linkedin: https://www.linkedin.com/in/mi
       slug: 'quem-somos-nos',
       isPublished: true,
       categoryId: 3,
+      article_level: '',
+      estimated_time: 1,
     },
   });
 
@@ -224,6 +232,8 @@ O segredo está em nunca parar de aprender, manter a curiosidade viva e, princip
       slug: 'desafios-desenvolvedor-frontend',
       isPublished: true,
       categoryId: 1,
+      article_level: '',
+      estimated_time: 4,
     },
   });
 
@@ -239,6 +249,8 @@ O segredo está em nunca parar de aprender, manter a curiosidade viva e, princip
       slug: 'errando-que-se-aprende',
       isPublished: true,
       categoryId: 1,
+      article_level: '',
+      estimated_time: 6,
     },
   });
 
@@ -286,6 +298,8 @@ Escolha um projeto. Qualquer um. Algo que te motive. Algo que te faça pesquisar
       slug: 'pratique-como-ser-um-desenvolvedor',
       isPublished: true,
       categoryId: 1,
+      article_level: '',
+      estimated_time: 4,
     },
   });
 
@@ -384,6 +398,8 @@ Se você também está nesse caminho, saiba que cada passo importa. E o próximo
       slug: 'criando-minhas-interfaces',
       isPublished: true,
       categoryId: 1,
+      article_level: '',
+      estimated_time: 7,
     },
   });
 
@@ -508,6 +524,8 @@ O segredo? **Nunca parar de aprender e sempre buscar entregar valor com o que vo
       slug: 'desenvolvimento-mobile-2025',
       isPublished: true,
       categoryId: 7,
+      article_level: '',
+      estimated_time: 4,
     },
   });
 
@@ -594,6 +612,8 @@ Para mim, tem sido uma experiência fantástica tanto profissional quanto pessoa
         slug: 'morar-fora-do-brasil-vale-a-pena-mesmo',
         isPublished: true,
         categoryId: 1,
+        article_level: '',
+        estimated_time: 7,
       },
     },
   );
@@ -682,6 +702,8 @@ Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e
       slug: 'primeiros-passos-como-freelance',
       isPublished: true,
       categoryId: 8,
+      article_level: '',
+      estimated_time: 6,
     },
   });
 
@@ -697,6 +719,8 @@ Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e
       slug: 'componentes',
       isPublished: true,
       categoryId: 9,
+      article_level: '',
+      estimated_time: 8,
     },
   });
 
@@ -712,6 +736,8 @@ Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e
       slug: 'tailwind-mobile-first',
       isPublished: true,
       categoryId: 10,
+      article_level: '',
+      estimated_time: 4,
     },
   });
 
@@ -727,11 +753,13 @@ Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e
       slug: 'tailwind-uma-ferramenta-poderosa',
       isPublished: true,
       categoryId: 10,
+      article_level: '',
+      estimated_time: 5,
     },
   });
 
   const GENERIC_COMPONENTS = await prisma.post.upsert({
-    where: { id: 18 },
+    where: { id: 17 },
     update: {},
     create: {
       title: 'Componentes Genéricos: A Arte de Não Reinventar a Roda (Parte 1)',
@@ -742,6 +770,25 @@ Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e
       slug: 'componentes-genericos-arte-de-nao-reinventar-roda-parte-1',
       isPublished: true,
       categoryId: 9,
+      article_level: '',
+      estimated_time: 8,
+    },
+  });
+
+  const GENERIC_COMPONENTS_02 = await prisma.post.upsert({
+    where: { id: 18 },
+    update: {},
+    create: {
+      title: 'Componentes Genéricos: A Arte de Não Reinventar a Roda (Parte 2)',
+      authorId: 4,
+      content: ``,
+      previewContent:
+        'Na Parte 2, vamos explorar quando faz sentido usar componentes genéricos e quando isso pode virar um problema. Inclui o caso real dos filtros genéricos que deu tudo errado e lições práticas para evitar armadilhas.',
+      slug: 'componentes-genericos-arte-de-nao-reinventar-roda-parte-2',
+      isPublished: true,
+      categoryId: 9,
+      article_level: '',
+      estimated_time: 8,
     },
   });
 
@@ -761,5 +808,6 @@ Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e
     TAILWINDCSS_IS_MOBILE_FIRST,
     TAILWINDCSS_A_POWERFUL_TOOL,
     GENERIC_COMPONENTS,
+    GENERIC_COMPONENTS_02,
   });
 }
