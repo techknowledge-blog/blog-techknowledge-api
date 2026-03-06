@@ -63,6 +63,18 @@ export async function seedCategories() {
     create: { name: 'tailwindcss' },
   });
 
+  const CATEGORY_DATASTRUCTURES_ALGORITHMS = await prisma.category.upsert({
+    where: { id: 11 },
+    update: {},
+    create: { name: 'Estrutura de Dados & Algoritmos' },
+  });
+
+  const CATEGORY_DESIGN = await prisma.category.upsert({
+    where: { id: 12 },
+    update: {},
+    create: { name: 'design' },
+  });
+
   console.log({
     CATEGORY_REFLEXION,
     CATEGORY_OLYMPIAD,
@@ -74,5 +86,7 @@ export async function seedCategories() {
     CATEGORY_CAREER,
     CATEGORY_FRONTEND,
     CATEGORY_TAILWINDCSS,
+    CATEGORY_DATASTRUCTURES_ALGORITHMS,
+    CATEGORY_DESIGN,
   });
 }

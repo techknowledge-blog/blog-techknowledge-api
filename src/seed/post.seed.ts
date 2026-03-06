@@ -792,6 +792,57 @@ Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e
     },
   });
 
+  const UNDERSTANDING_ALGORITHMS = await prisma.post.upsert({
+    where: { id: 19 },
+    update: {},
+    create: {
+      title: 'Entendendo Algoritmos',
+      authorId: 2,
+      content: ``,
+      previewContent:
+        'O que são algoritmos? Aprenda com exemplos do dia a dia como eles influenciam nossa rotina e a tecnologia ao nosso redor.',
+      slug: 'entendendo-algoritmos',
+      isPublished: true,
+      categoryId: 11,
+      article_level: 'Iniciante',
+      estimated_time: 9,
+    },
+  });
+
+  const TAILWINDCSS_V4 = await prisma.post.upsert({
+    where: { id: 20 },
+    update: {},
+    create: {
+      title: 'Tailwind CSS v4: Uma nova era para o framework.',
+      authorId: 2,
+      content: ``,
+      previewContent:
+        'O Tailwind CSS v4 chegou com uma nova arquitetura, mais desempenho e uma configuração simplificada. Descubra o que mudou e como essa versão redefine a forma de escrever CSS moderno.',
+      slug: 'tailwind-css-v4-uma-nova-era-para-o-framework',
+      isPublished: true,
+      categoryId: 10,
+      article_level: 'Avançado',
+      estimated_time: 9,
+    },
+  });
+
+  const DESIGN_SYSTEM = await prisma.post.upsert({
+    where: { id: 22 },
+    update: {},
+    create: {
+      title: 'Design System: o que é e quando não ter um',
+      authorId: 9,
+      content: ``,
+      previewContent:
+        'Neste artigo, você vai entender o que é um Design System e em quais cenários faz mais sentido não criar um.',
+      slug: 'design-system-o-que-e-e-quando-nao-ter-um',
+      isPublished: true,
+      categoryId: 12,
+      article_level: 'Intermediário',
+      estimated_time: 8,
+    },
+  });
+
   console.log({
     FAZ_FUNCIONAR_E_DEPOIS_MELHORA_SERA_MESMO,
     OLIMPIADA_DO_CONHECIMENTO,
@@ -809,5 +860,8 @@ Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e
     TAILWINDCSS_A_POWERFUL_TOOL,
     GENERIC_COMPONENTS,
     GENERIC_COMPONENTS_02,
+    UNDERSTANDING_ALGORITHMS,
+    TAILWINDCSS_V4,
+    DESIGN_SYSTEM,
   });
 }
