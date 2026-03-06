@@ -826,6 +826,23 @@ Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e
     },
   });
 
+  const DESIGN_SYSTEM = await prisma.post.upsert({
+    where: { id: 22 },
+    update: {},
+    create: {
+      title: 'Design System: o que é e quando não ter um',
+      authorId: 9,
+      content: ``,
+      previewContent:
+        'Neste artigo, você vai entender o que é um Design System e em quais cenários faz mais sentido não criar um.',
+      slug: 'design-system-o-que-e-e-quando-nao-ter-um',
+      isPublished: true,
+      categoryId: 12,
+      article_level: 'Intermediário',
+      estimated_time: 8,
+    },
+  });
+
   console.log({
     FAZ_FUNCIONAR_E_DEPOIS_MELHORA_SERA_MESMO,
     OLIMPIADA_DO_CONHECIMENTO,
@@ -845,5 +862,6 @@ Trabalhar como freelancer tem sido uma jornada cheia de aprendizados, desafios e
     GENERIC_COMPONENTS_02,
     UNDERSTANDING_ALGORITHMS,
     TAILWINDCSS_V4,
+    DESIGN_SYSTEM,
   });
 }
